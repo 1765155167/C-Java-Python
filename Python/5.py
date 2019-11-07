@@ -10,8 +10,8 @@ def is_prime(number):#判断素数
                 return False
         return True
     return False
-a = int(input())
-if(is_prime(a)):
-    print('yes')
+num = int(input('请输入一个数：'))
+if(is_prime(num)):
+    print('{0} is prime(素数)'.format(num))
 else:
-    print('no')
+    print('{0} not is prime(素数)'.format(num))

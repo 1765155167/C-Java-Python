@@ -17,10 +17,10 @@ void Swap(T &a, T &b)
 	b = t;
 }
 
-/*Ã°ÅİÅÅĞò*/
+/*å†’æ³¡æ’åº*/
 void BriSort(int data[], int len)
 {
-	bool flag = false;//Êµ²â¼Ó±êÖ¾±äÁ¿¶ÔÓÚËæ»úÊıÅÅĞòÊ±¼ä±ä¶àÁË£¬¶ÔÓÚ½»»»±äÁ¿ÊÇºÜ¶àÄÚÈİµÄ½á¹¹ÌåÊ±¼Ó±êÖ¾±äÁ¿»áËõ¶ÌÊ±¼ä
+	bool flag = false;//å®æµ‹åŠ æ ‡å¿—å˜é‡å¯¹äºéšæœºæ•°æ’åºæ—¶é—´å˜å¤šäº†ï¼Œå¯¹äºäº¤æ¢å˜é‡æ˜¯å¾ˆå¤šå†…å®¹çš„ç»“æ„ä½“æ—¶åŠ æ ‡å¿—å˜é‡ä¼šç¼©çŸ­æ—¶é—´
 
 	for(int i = 0; i < len - 1; i++)
 	{
@@ -40,7 +40,7 @@ void BriSort(int data[], int len)
 	}
 }
 
-/*²åÈëÅÅĞò*/
+/*æ’å…¥æ’åº*/
 void InsertSort(int data[],int len)
 {
 	int begin = 1;
@@ -63,7 +63,7 @@ void InsertSort(int data[],int len)
 	}
 }
 
-/*Ñ¡ÔñÅÅĞò*/
+/*é€‰æ‹©æ’åº*/
 void selectionSort(int data[], int len)
 {
 	for(int i = 0; i < len; i++)
@@ -71,7 +71,7 @@ void selectionSort(int data[], int len)
 		int max = i;
 		for(int j = i; j < len; j++)
 		{
-			if(data[j] > data[max])/*²éÕÒ[i-len]×î´óÖµ×ø±ê*/
+			if(data[j] > data[max])/*æŸ¥æ‰¾[i-len]æœ€å¤§å€¼åæ ‡*/
 			{
 				max = j;
 			}
@@ -80,26 +80,26 @@ void selectionSort(int data[], int len)
 	}
 }
 
-/*Ï£¶ûÅÅĞò*/
+/*å¸Œå°”æ’åº*/
 void shellSort(int data[], int len)
 {
 	for(int gap = len/2; gap > 0; gap /= 2)
 	{
-		for(int i = 0; i < gap; i++)/*i×é [i:len-i]ÔöÁ¿gap½øĞĞ²åÈëÅÅĞò*/
+		for(int i = 0; i < gap; i++)/*iç»„ [i:len-i]å¢é‡gapè¿›è¡Œæ’å…¥æ’åº*/
 		{
-			int begin = i + gap;//Òª²åÈëµÄÔªËØµÄÎ»ÖÃ
+			int begin = i + gap;//è¦æ’å…¥çš„å…ƒç´ çš„ä½ç½®
 			while(begin < len - i)
 			{
 				int j = 0;
 				int key = data[begin];
 				for(j = begin - gap; j >= i; j -= gap)
 				{
-					if(key <= data[j])//Âú×ã²åÈëÌõ¼ş
+					if(key <= data[j])//æ»¡è¶³æ’å…¥æ¡ä»¶
 					{
 						data[j + gap] = key;
 						break;
 					}
-					data[j + gap] = data[j];//ÔªËØÏòºóÒÆ¶¯gapÎ»
+					data[j + gap] = data[j];//å…ƒç´ å‘åç§»åŠ¨gapä½
 				}
 				if(j < i)
 					data[i] = key;
@@ -109,7 +109,7 @@ void shellSort(int data[], int len)
 	}
 }
 
-/*¹é²¢ÅÅĞò*/
+/*å½’å¹¶æ’åº*/
 template<class T>
 void MergeSortTemp(T data[], int start, int end, T temp[])
 {
@@ -159,18 +159,18 @@ void MergeSort(T data[], T len)
 	MergeSortTemp(data, 0, len - 1, temp);
 }
 
-/*¶ÑÅÅĞò*/
+/*å †æ’åº*/
 void adjustHeap(int * arrs, int p, int len){
-    int curParent = arrs[p]; //¸¸Ç×½Úµã
-    int child = 2 * p + 1;   //×óº¢×Ó
-    while(child < len){      //Ã»ÓĞº¢×Ó
-        if(child + 1 < len && arrs[child] < arrs[child+1]){//ÓĞÓÒº¢×Ó²¢ÇÒÓÒº¢×ÓÖµ´óÓÚ×óº¢×Ó
-            child++;    //½Ï´óº¢×ÓµÄÏÂ±ê
+    int curParent = arrs[p]; //çˆ¶äº²èŠ‚ç‚¹
+    int child = 2 * p + 1;   //å·¦å­©å­
+    while(child < len){      //æ²¡æœ‰å­©å­
+        if(child + 1 < len && arrs[child] < arrs[child+1]){//æœ‰å³å­©å­å¹¶ä¸”å³å­©å­å€¼å¤§äºå·¦å­©å­
+            child++;    //è¾ƒå¤§å­©å­çš„ä¸‹æ ‡
         }
         if(curParent < arrs[child]){
             arrs[p]=arrs[child];
-            //Ã»ÓĞ½«curParent¸³Öµ¸øº¢×ÓÊÇÒòÎª»¹Òªµü´ú×ÓÊ÷£¬
-            //Èç¹ûÆäº¢×ÓÖĞÓĞ´óµÄ£¬»áÉÏÒÆ£¬curParent»¹Òª¼ÌĞøÏÂÒÆ¡£
+            //æ²¡æœ‰å°†curParentèµ‹å€¼ç»™å­©å­æ˜¯å› ä¸ºè¿˜è¦è¿­ä»£å­æ ‘ï¼Œ
+            //å¦‚æœå…¶å­©å­ä¸­æœ‰å¤§çš„ï¼Œä¼šä¸Šç§»ï¼ŒcurParentè¿˜è¦ç»§ç»­ä¸‹ç§»ã€‚
             p=child;
             child=2*p+1;
         }
@@ -181,7 +181,7 @@ void adjustHeap(int * arrs, int p, int len){
 }
 
 void heapSort(int * arrs, int len){
-    //½¨Á¢¶Ñ£¬´Ó×îµ×²ãµÄ¸¸½Úµã¿ªÊ¼
+    //å»ºç«‹å †ï¼Œä»æœ€åº•å±‚çš„çˆ¶èŠ‚ç‚¹å¼€å§‹
     for(int i = len/2 -1; i>=0; i--)
         adjustHeap(arrs, i, len);
     for(int i = len -1; i>=0; i--){
@@ -219,11 +219,11 @@ int main(void)
 #endif
 
 	c_start = clock();
-	//BriSort(data, len);//Ã°ÅİÅÅĞò num:20000 time:1496ms O(n^2)
-	//InsertSort(data, len);//²åÈëÅÅĞò num:20000 time:300ms O(n^2)
-	//selectionSort(data, len);//Ñ¡ÔñÅÅĞò num:20000 time:557ms O(n^2)
-	//shellSort(data, len);//Ï£¶ûÅÅĞò num:20000 * 10 time:35ms O(n^logn)
-	//heapSort(data, len);//¶ÑÅÅĞò num:20000 * 10 time:44ms O(n^logn)
+	//BriSort(data, len);//å†’æ³¡æ’åº num:20000 time:1496ms O(n^2)
+	//InsertSort(data, len);//æ’å…¥æ’åº num:20000 time:300ms O(n^2)
+	//selectionSort(data, len);//é€‰æ‹©æ’åº num:20000 time:557ms O(n^2)
+	//shellSort(data, len);//å¸Œå°”æ’åº num:20000 * 10 time:35ms O(n^logn)
+	//heapSort(data, len);//å †æ’åº num:20000 * 10 time:44ms O(n^logn)
 	MergeSort(data, len);
 	c_end =clock();
 
