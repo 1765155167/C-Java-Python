@@ -4,8 +4,8 @@
 #include <queue>
 #include <pthread.h>
 #include <csignal>
-#include <windows.h>
 #include <iostream>
+#include <unistd.h>
 
 using namespace std;
 
@@ -114,7 +114,7 @@ template<class T>
 void MergeSortTemp(T data[], int start, int end, T temp[])
 {
 	int len = end - start + 1;
-	int mid = (end - start) / 2;
+	int mid = start + (end - start) / 2;/*中间位置*/
 	if (len == 0) {
 		return ;
 	}
@@ -147,9 +147,7 @@ void MergeSortTemp(T data[], int start, int end, T temp[])
 	for(int i = 0; i < k; i++)
 	{
 		data[start + i] = temp[i];
-		cout << temp[i] << " ";
 	}
-	cout << endl;
 }
 
 template<class T>
@@ -193,7 +191,43 @@ void heapSort(int * arrs, int len){
     }
 }
 
+/*快速排序-降序*/
+void SpeedTemp(int data[], int start, int end)/*[start,end)*/
+{
+	if(start >= end)
+	{
+		return ;
+	}
+	cout << "[" << start << ", " << end << ")" << endl;
+	int base = data[start];/*基准数*/
+	int i = start, j = end - 1;
+	while (i != j)
+	{
+		/*从后向前找第一个比基准值大的元素*/
+		while (i < j && data[j] <= base)
+		{
+			j--;
+			cout << "j:" << j << ":" << data[j] << endl;
+		}
+		
+		/*从前向后找第一个比基准值小的元素*/
+		while (i < j && data[i] >= base)
+		{
+			i++;
+			cout << "i:" << i << ":" << data[i] << endl;
+		}
+		swap(data[i], data[j]);
+		//sleep(1);
+	}
+	swap(data[start], data[i]);
+	SpeedTemp(data, start, i);
+	SpeedTemp(data, i, end);
+}
 
+void SpeedSort(int data[], int len)
+{
+	SpeedTemp(data, 0, len);
+}
 
 #define MAX 10//5938
 #define PRINT
@@ -210,7 +244,8 @@ int main(void)
 	}
 	len = sizeof(data) / sizeof(data[0]);
 
-#ifdef PRINT
+#ifdef PRINT/*打印排序前内容*/
+	cout << "排序前内容: ";
 	for(int i = 0; i < sizeof(data) / sizeof(data[0]); i++)
 	{
 		cout << data[i] << " ";
@@ -224,18 +259,19 @@ int main(void)
 	//selectionSort(data, len);//选择排序 num:20000 time:557ms O(n^2)
 	//shellSort(data, len);//希尔排序 num:20000 * 10 time:35ms O(n^logn)
 	//heapSort(data, len);//堆排序 num:20000 * 10 time:44ms O(n^logn)
-	MergeSort(data, len);
+	//MergeSort(data, len);//归并排序
+	SpeedSort(data, len);//快速排序
 	c_end =clock();
 
-	cout << difftime(c_end, c_start) << endl;
-
-#ifdef PRINT
+#ifdef PRINT/*打印排序后内容*/
+	cout << "排序后内容: ";
 	for(int i = 0; i < sizeof(data) / sizeof(data[0]); i++)
 	{
 		cout << data[i] << " ";
 	}
 	cout << endl;
 #endif
-	
+	cout << "排序规模:" << len << 
+			" 所需时间:" << difftime(c_end, c_start) << endl;
 	return 0;
 }
