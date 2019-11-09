@@ -3,6 +3,7 @@
 ## java
 ## python
 #查询分支的合并情况
+dev branch.
 git log --graph --pretty==oneline --abbrev-comit
 master应该为最稳定的分支
 dev为开发中分支，不定时向master合并
