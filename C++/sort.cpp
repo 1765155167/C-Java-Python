@@ -194,33 +194,30 @@ void heapSort(int * arrs, int len){
 /*快速排序-降序[0,1)*/
 void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 {
-	cout << "[" << start << ", " << end << ")" << endl;
-	if(start >= end - 1)
+	if (start >= end - 1)
 	{
 		return ;
 	}
 	int base = data[start];/*基准数*/
 	int i = start, j = end - 1;
-	while (i != j)
-	{
-		/*从后向前找第一个比基准值大的元素*/
-		while (i < j && data[j] <= base)
-		{
-			j--;
-			cout << "j:" << j << ":" << data[j] << endl;
-		}
-		
-		/*从前向后找第一个比基准值小的元素*/
-		while (i < j && data[i] >= base)
-		{
-			i++;
-			cout << "i:" << i << ":" << data[i] << endl;
-		}
-		swap(data[i], data[j]);
-	}
-	swap(data[start], data[i]);
-	SpeedTemp(data, start, i);
-	SpeedTemp(data, i + 1, end);
+    while(i != j)
+    {
+        /*从后向前找第一个比基准值大的元素*/
+        while (i < j && data[j] <= base)
+        {
+            j--;
+        }
+
+        /*从前向后找第一个比基准值小的元素*/
+        while (i < j && data[i] >= base)
+        {
+            i++;
+        }
+        swap(data[i], data[j]);
+    }
+    swap(data[start], data[i]);
+    SpeedTemp(data, start, i);
+    SpeedTemp(data, i + 1, end);
 }
 
 void SpeedSort(int data[], int len)
@@ -228,7 +225,7 @@ void SpeedSort(int data[], int len)
 	SpeedTemp(data, 0, len);
 }
 
-#define MAX 10//5938
+#define MAX 10
 #define PRINT
 int main(void)
 {
@@ -245,7 +242,7 @@ int main(void)
 
 #ifdef PRINT/*打印排序前内容*/
 	cout << "排序前内容: ";
-	for(int i = 0; i < sizeof(data) / sizeof(data[0]); i++)
+	for(int i = 0; i < len; i++)
 	{
 		cout << data[i] << " ";
 	}
@@ -259,12 +256,12 @@ int main(void)
 	//shellSort(data, len);//希尔排序 num:20000 * 10 time:35ms O(n^logn)
 	//heapSort(data, len);//堆排序 num:20000 * 10 time:44ms O(n^logn)
 	//MergeSort(data, len);//归并排序
-	SpeedSort(data, len);//快速排序
+	//SpeedSort(data, len);//快速排序
 	c_end =clock();
 
 #ifdef PRINT/*打印排序后内容*/
 	cout << "排序后内容: ";
-	for(int i = 0; i < sizeof(data) / sizeof(data[0]); i++)
+	for(unsigned int i = 0; i < len; i++)
 	{
 		cout << data[i] << " ";
 	}
