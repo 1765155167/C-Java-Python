@@ -191,14 +191,14 @@ void heapSort(int * arrs, int len){
     }
 }
 
-/*快速排序-降序*/
+/*快速排序-降序[0,1)*/
 void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 {
-	if(start >= end)
+	cout << "[" << start << ", " << end << ")" << endl;
+	if(start >= end - 1)
 	{
 		return ;
 	}
-	cout << "[" << start << ", " << end << ")" << endl;
 	int base = data[start];/*基准数*/
 	int i = start, j = end - 1;
 	while (i != j)
@@ -217,11 +217,10 @@ void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 			cout << "i:" << i << ":" << data[i] << endl;
 		}
 		swap(data[i], data[j]);
-		//sleep(1);
 	}
 	swap(data[start], data[i]);
 	SpeedTemp(data, start, i);
-	SpeedTemp(data, i, end);
+	SpeedTemp(data, i + 1, end);
 }
 
 void SpeedSort(int data[], int len)
