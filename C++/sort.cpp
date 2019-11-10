@@ -194,7 +194,6 @@ void heapSort(int * arrs, int len){
 /*快速排序-降序[0,1)*/
 void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 {
-	cout << "[" << start << ", " << end << ")" << endl;
 	if(start >= end - 1)
 	{
 		return ;
@@ -207,14 +206,12 @@ void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 		while (i < j && data[j] <= base)
 		{
 			j--;
-			cout << "j:" << j << ":" << data[j] << endl;
 		}
 		
 		/*从前向后找第一个比基准值小的元素*/
 		while (i < j && data[i] >= base)
 		{
 			i++;
-			cout << "i:" << i << ":" << data[i] << endl;
 		}
 		swap(data[i], data[j]);
 	}
