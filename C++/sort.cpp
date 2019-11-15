@@ -191,7 +191,7 @@ void heapSort(int * arrs, int len){
     }
 }
 
-/*快速排序-降序[0,1)*/
+/*快速排序-降序*/
 void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 {
 	if (start >= end - 1)
@@ -256,7 +256,7 @@ int main(void)
 	//shellSort(data, len);//希尔排序 num:20000 * 10 time:35ms O(n^logn)
 	//heapSort(data, len);//堆排序 num:20000 * 10 time:44ms O(n^logn)
 	//MergeSort(data, len);//归并排序
-	//SpeedSort(data, len);//快速排序
+	SpeedSort(data, len);//快速排序
 	c_end =clock();
 
 #ifdef PRINT/*打印排序后内容*/

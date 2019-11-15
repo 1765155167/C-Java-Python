@@ -3,6 +3,12 @@ package Sort;
 * 冒泡排序
 * */
 public class BubbleSort {
+    public static  void swap(int a, int b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
     public static void bubbleSort(int [] arr)
     {
         int temp;
@@ -14,9 +20,7 @@ public class BubbleSort {
             {
                 if(arr[j] < arr[j + 1])
                 {
-                    temp = arr [j + 1];
-                    arr[j + 1] = arr[j];
-                    arr[j] = temp;
+                    swap(arr[j], arr[j + 1]);
                     flag = true;
                 }
             }
