@@ -194,7 +194,7 @@ void heapSort(int * arrs, int len){
 /*快速排序-降序[0,1)*/
 void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 {
-	if(start >= end - 1)
+	if (start >= end - 1)
 	{
 		return ;
 	}
@@ -225,7 +225,7 @@ void SpeedSort(int data[], int len)
 	SpeedTemp(data, 0, len);
 }
 
-#define MAX 10//5938
+#define MAX 10
 #define PRINT
 int main(void)
 {
@@ -242,7 +242,7 @@ int main(void)
 
 #ifdef PRINT/*打印排序前内容*/
 	cout << "排序前内容: ";
-	for(int i = 0; i < sizeof(data) / sizeof(data[0]); i++)
+	for(int i = 0; i < len; i++)
 	{
 		cout << data[i] << " ";
 	}
@@ -261,7 +261,7 @@ int main(void)
 
 #ifdef PRINT/*打印排序后内容*/
 	cout << "排序后内容: ";
-	for(int i = 0; i < sizeof(data) / sizeof(data[0]); i++)
+	for(int i = 0; i < len; i++)
 	{
 		cout << data[i] << " ";
 	}
