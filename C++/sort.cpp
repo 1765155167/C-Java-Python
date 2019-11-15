@@ -194,7 +194,7 @@ void heapSort(int * arrs, int len){
 /*快速排序-降序[0,1)*/
 void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 {
-	if(start >= end - 1)
+	if (start >= end - 1)
 	{
 		return ;
 	}
