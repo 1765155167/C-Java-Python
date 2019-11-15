@@ -200,24 +200,24 @@ void SpeedTemp(int data[], int start, int end)/*[start,end)*/
 	}
 	int base = data[start];/*基准数*/
 	int i = start, j = end - 1;
-    while(i != j)
-    {
-        /*从后向前找第一个比基准值大的元素*/
-        while (i < j && data[j] <= base)
-        {
-            j--;
-        }
-
-        /*从前向后找第一个比基准值小的元素*/
-        while (i < j && data[i] >= base)
-        {
-            i++;
-        }
-        swap(data[i], data[j]);
-    }
-    swap(data[start], data[i]);
-    SpeedTemp(data, start, i);
-    SpeedTemp(data, i + 1, end);
+	while (i != j)
+	{
+		/*从后向前找第一个比基准值大的元素*/
+		while (i < j && data[j] <= base)
+		{
+			j--;
+		}
+		
+		/*从前向后找第一个比基准值小的元素*/
+		while (i < j && data[i] >= base)
+		{
+			i++;
+		}
+		swap(data[i], data[j]);
+	}
+	swap(data[start], data[i]);
+	SpeedTemp(data, start, i);
+	SpeedTemp(data, i + 1, end);
 }
 
 void SpeedSort(int data[], int len)
@@ -261,7 +261,7 @@ int main(void)
 
 #ifdef PRINT/*打印排序后内容*/
 	cout << "排序后内容: ";
-	for(unsigned int i = 0; i < len; i++)
+	for(int i = 0; i < len; i++)
 	{
 		cout << data[i] << " ";
 	}
