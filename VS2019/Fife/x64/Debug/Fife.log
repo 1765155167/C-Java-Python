@@ -1,0 +1,3 @@
+﻿  Fife.cpp
+C:\Users\17651\source\repos\Hello\Fife\Fife.cpp(149): warning C4715: “StackTest”: 不是所有的控件路径都返回值
+  Fife.vcxproj -> C:\Users\17651\source\repos\Hello\x64\Debug\Fife.exe

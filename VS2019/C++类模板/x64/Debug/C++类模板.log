@@ -1,0 +1,3 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (C++。类模板.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  C++类模板.cpp
+  C++类模板.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\x64\Debug\C++类模板.exe
