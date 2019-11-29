@@ -1,49 +1,32 @@
 #pragma once
 #include <iostream>
+
 template<class T>
 class MyArray
 {
 public:
-	MyArray<T>();
-	MyArray<T>(int len);
-	MyArray<T>(const MyArray<T>& p);
+	MyArray();
+	MyArray(int len);
+	MyArray(const MyArray& p);
 	//重载赋值运算符号
-	MyArray<T>& operator=(const MyArray<T>& p);
-	MyArray<T> operator+(const MyArray<T>& another);
-	MyArray<T>& operator+=(const MyArray<T>& another);
-	MyArray<T> operator+(int num);
-	MyArray<T>& operator+=(int num);
-	MyArray<T>& operator++();//前置++
-	const MyArray<T> operator++(int);//后置++
+	MyArray& operator=(const MyArray& p);
+	MyArray operator+(const MyArray& another);
+	MyArray& operator+=(const MyArray& another);
+	MyArray operator+(int num);
+	MyArray& operator+=(int num);
+	MyArray& operator++();//前置++
+	const MyArray operator++(int);//后置++
 	T& operator[](int i);
 	template<class A>
 	friend std::ostream& operator<<(std::ostream& os, MyArray<A>& another);
-	~MyArray<T>();
+	~MyArray();
 	int getLen();
-	void setData(int i, T data);
+	void setData(size_t i, T data);
 	T getData(int i);
 	void* operator new(size_t size);
-	void* operator new[](size_t size)
-	{
-		std::cout << "重载了new[]操作符" << std::endl;
-		return malloc(size);
-	}
-	void operator delete(void* addr)
-	{
-		if (addr != NULL) {
-			std::cout << "重载了delete操作符" << std::endl;
-			free(addr);
-			addr = NULL;
-		}
-	}
-	void operator delete[](void* addr)
-	{
-		if (addr != NULL) {
-			std::cout << "重载了delete[]操作符" << std::endl;
-			free(addr);
-			addr = NULL;
-		}
-	}
+	void* operator new[](size_t size);
+	void operator delete(void* addr);
+	void operator delete[](void* addr);
 private:
 	int len;
 	T* speace;
@@ -61,10 +44,14 @@ inline MyArray<T>::MyArray(int len)
 {
 	this->len = len;
 	this->speace = new T[len];
+	for (size_t i = 0; i < len; i++)
+	{
+		this->speace[i] = 0;
+	}
 }
 
 template<class T>
-inline MyArray<T>::MyArray(const MyArray<T>& p)
+inline MyArray<T>::MyArray(const MyArray& p)
 {
 	this->len = p.len;
 	this->speace = new T[len];
@@ -85,7 +72,7 @@ inline MyArray<T>::~MyArray()
 }
 
 template<class T>
-inline 	MyArray<T>& MyArray<T>::operator=(const MyArray<T>& p)
+inline 	MyArray<T>& MyArray<T>::operator=(const MyArray& p)
 {
 	this->len = p.len;
 	if (this->speace != NULL)
@@ -102,7 +89,7 @@ inline 	MyArray<T>& MyArray<T>::operator=(const MyArray<T>& p)
 }
 
 template<class T>
-inline MyArray<T> MyArray<T>::operator+(const MyArray<T>& another)
+inline MyArray<T> MyArray<T>::operator+(const MyArray& another)
 {
 	int len1 = this->len;
 	int len2 = another.len;
@@ -120,7 +107,7 @@ inline MyArray<T> MyArray<T>::operator+(const MyArray<T>& another)
 }
 
 template<class T>
-inline MyArray<T>& MyArray<T>::operator+=(const MyArray<T>& another)
+inline MyArray<T>& MyArray<T>::operator+=(const MyArray& another)
 {
 	int len1 = this->len;
 	int len2 = another.len;
@@ -201,7 +188,7 @@ inline int MyArray<T>::getLen()
 }
 
 template<class T>
-inline void MyArray<T>::setData(int i, T data)
+inline void MyArray<T>::setData(size_t i, T data)
 {
 	if (i > len)
 	{
@@ -224,10 +211,49 @@ inline T MyArray<T>::getData(int i)
 	return *(this->speace + i);
 	//return this->speace[i];
 }
+#if 1
 
 template<class T>
 inline void* MyArray<T>::operator new(size_t size)
 {
 	std::cout << "重载了new操作符" << std::endl;
 	return malloc(size);
+}
+
+template<class T>
+inline void* MyArray<T>::operator new[](size_t size)
+{
+	std::cout << "重载了new[]操作符" << std::endl;
+	return malloc(size);
+}
+
+template<class T>
+inline void MyArray<T>::operator delete(void* addr)
+{
+	if (addr != NULL) {
+		std::cout << "重载了delete操作符" << std::endl;
+		free(addr);
+		addr = NULL;
+	}
+}
+
+template<class T>
+inline void MyArray<T>::operator delete[](void* addr)
+{
+	if (addr != NULL) {
+		std::cout << "重载了delete[]操作符" << std::endl;
+		free(addr);
+		addr = NULL;
+	}
+}
+#endif // 0
+
+template<class A>
+inline std::ostream& operator<<(std::ostream& os, MyArray<A>& another)
+{
+	for (size_t i = 0; i < another.len; i++)
+	{
+		os << another.speace[i] << " ";
+	}
+	return os;
 }

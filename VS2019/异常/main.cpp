@@ -16,19 +16,21 @@ private:
 
 MyExtern::MyExtern()
 {
+	std::cout << "MyExtern()..." << std::endl;
 	this->info = "·ÖÄ¸Îª0";
 }
 
 MyExtern::~MyExtern()
 {
+	std::cout << "~MyExtern()..." << std::endl;
 }
 
 float div(float a, float b)
 {
 	if (b == 0)
 	{
-		std::bad_cast a;
-		throw a;
+		throw MyExtern();
+	//	throw std::bad_cast();
 	}
 	return a / b;
 }
@@ -51,7 +53,7 @@ int main()
 	}
 	catch (std::exception& e)
 	{
-		std::cout << __LINE__ << "std::exception err" << std::endl;
+		std::cout << __LINE__ << "std::exception" << e.what() << std::endl;
 	}
 	catch (...)
 	{

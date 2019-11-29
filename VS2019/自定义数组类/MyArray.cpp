@@ -1,11 +1,10 @@
 #include "MyArray.h"
 #include <iostream>
 #include <ctime>
-
-int main()
+void test01()
 {
 	MyArray<int> data(5);
-	srand(time(NULL));
+	srand(static_cast<int>(time(NULL)));
 	for (size_t i = 0; i < data.getLen(); i++)
 	{
 		data.setData(i, rand() % 255);
@@ -40,15 +39,21 @@ int main()
 	std::cout << "data5 = data3++----------->" << std::endl;
 	std::cout << "data5:" << data5 << std::endl;
 
+}
+int main()
+{
+	MyArray<int> data(5);
+	srand(static_cast<int>(time(NULL)));
+	for (int i = 0; i < data.getLen(); i++)
+	{
+		data[i] = rand() % 255;
+	}
+	std::cout << "data:" << data << std::endl;
+	std::cout << "---------------->" << std::endl;
+	MyArray<int>* data3 = new MyArray<int>(10);
+	
+	(*data3)[1] = 10;
+	delete data3;
 	return 0;
 }
 
-template<class A>
-std::ostream& operator<<(std::ostream& os, MyArray<A>& another)
-{
-	for (size_t i = 0; i < another.len; i++)
-	{
-		os << another.speace[i] << " ";
-	}
-	return os;
-}

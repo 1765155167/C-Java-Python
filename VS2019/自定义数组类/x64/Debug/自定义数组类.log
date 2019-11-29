@@ -1,4 +1,2 @@
 ﻿  MyArray.cpp
-C:\Users\17651\source\repos\Hello\自定义数组类\MyArray.cpp(8,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-C:\Users\17651\source\repos\Hello\自定义数组类\MyArray.cpp(11,31): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-  自定义数组类.vcxproj -> C:\Users\17651\source\repos\Hello\x64\Debug\自定义数组类.exe
+  自定义数组类.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\x64\Debug\自定义数组类.exe
