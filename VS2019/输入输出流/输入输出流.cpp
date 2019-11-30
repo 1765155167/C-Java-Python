@@ -33,7 +33,7 @@ void test02()
 
 	cout << R"(Hello I'am Mr.hu 
 I want to meet you)"
-		<< endl;
+<< endl;
 }
 
 void test03()
@@ -42,10 +42,10 @@ void test03()
 	cout.unsetf(ios::dec);
 	cout.setf(ios::oct);
 	cout.setf(ios::showbase);
-	cout << 10 << endl;
+	cout << "10=" << 10 << endl;
 	cout.unsetf(ios::oct);
 	cout.setf(ios::hex);
-	cout << "255:" << 255 << endl;
+	cout << "255=" << 255 << endl;
 }
 
 void test04()
@@ -71,6 +71,49 @@ void test04()
 		<< t.sencond << endl;
 }
 
+void test05()
+{
+#if 0
+	char ch;
+	//std::cin.get() 等待缓冲区有数据，
+	//键盘输入数据并且按回车才会将数据放到缓冲区
+	//EOF ：Ctrl+C
+	while ((ch = std::cin.get()) != EOF) {
+		std::cout << ch << std::endl;
+	}
+#endif
+
+#if 0
+	//char ch2;
+	//std::cin.get(ch);
+	char buf[256] = { 0 };
+	std::cin.get(buf, 256);
+	//std::cin.getline(buf, 256);//读取一行不读换行符
+	std::cout << buf;
+#endif // 0
+	
+#if 0
+	//std::cin.ignore();//忽略当前字符
+	std::cin.ignore(10, '\n');//最多忽略10个字符知道遇见'\n'
+	char ch = std::cin.peek();//偷窥一个字符不从缓冲区取走
+#endif // 0
+
+#if 0
+
+	std::cin.putback('a');//放一个数据到缓冲区
+	char ch1 = std::cin.peek();//偷窥缓冲区
+	char ch2 = std::cin.get();//读取一个字符
+	std::cout << ch1 << ":" << ch2 << std::endl;
+#endif // 1
+	
+}
+/*
+	std::cin;//标准输入流 等待缓冲区有数据
+	std::cout;//标准输出流 输出到缓冲区 不会立刻输出到显示器除非遇见
+	std::endl;//刷新缓冲区
+	std::cerr;//标准错误流 没有缓冲区
+	std::clog;//标准日志流 有缓冲区
+*/
 int main()
 {
 	test04();

@@ -1,2 +1,4 @@
-﻿  纯虚函数和抽象类.cpp
-  纯虚函数和抽象类.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\x64\Debug\纯虚函数和抽象类.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (纯虚函数和抽象类.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  纯虚函数和抽象类.cpp
+C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\纯虚函数和抽象类\纯虚函数和抽象类.cpp(10,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  纯虚函数和抽象类.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\x64\Debug\纯虚函数和抽象类-图形.exe

@@ -1,0 +1,4 @@
+﻿  异常对象生命周期.cpp
+C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\异常对象生命周期\异常对象生命周期.cpp(9,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\异常对象生命周期\异常对象生命周期.cpp(16,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  异常对象生命周期.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\x64\Debug\异常对象生命周期.exe

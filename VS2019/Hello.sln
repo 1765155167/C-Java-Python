@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "冒泡排序", "冒泡排�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C++类模板", "C++类模板\C++类模板.vcxproj", "{E629933E-C9FB-494C-8F19-E2D75A12E4BB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vector", "Vector\Vector.vcxproj", "{A81633DC-BE3D-409F-B3E4-7D4F99FDC354}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "STL-Vector", "Vector\Vector.vcxproj", "{A81633DC-BE3D-409F-B3E4-7D4F99FDC354}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "类大小", "类大小\类大小.vcxproj", "{DBAED21E-A992-4964-889F-87EA16FCB287}"
 EndProject
@@ -45,7 +45,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "多态", "多态\多态.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "多态原理VPTR虚函数指针", "多态原理VPTR虚函数指针\多态原理VPTR虚函数指针.vcxproj", "{5AC4074F-EFF2-4170-ADC0-45477D576109}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "纯虚函数和抽象类", "纯虚函数和抽象类\纯虚函数和抽象类.vcxproj", "{1C8B96C5-15B1-4DD7-A844-ADE2831E1BBA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "纯虚函数和抽象类-图形", "纯虚函数和抽象类\纯虚函数和抽象类.vcxproj", "{1C8B96C5-15B1-4DD7-A844-ADE2831E1BBA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "纯虚函数与多继承", "纯虚函数与多继承\纯虚函数与多继承.vcxproj", "{8AF30A9B-A927-465F-8E66-D0638AABAEC3}"
 EndProject
@@ -58,6 +58,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "数组指针", "数组指针\数组指针.vcxproj", "{92768C3D-DA3E-4E32-86B2-0175429A359A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C++类型转换", "C++类型转换\C++类型转换.vcxproj", "{83C7B159-997C-48E7-B6EF-66F9F0A2B64E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "异常对象生命周期", "异常对象生命周期\异常对象生命周期.vcxproj", "{C2095336-E7D5-42E8-B80E-20C6F414BA58}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "STL-String", "STL-String\STL-String.vcxproj", "{F0F230D7-2523-40D7-AB42-110E66C14CD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -291,6 +295,22 @@ Global
 		{83C7B159-997C-48E7-B6EF-66F9F0A2B64E}.Release|x64.Build.0 = Release|x64
 		{83C7B159-997C-48E7-B6EF-66F9F0A2B64E}.Release|x86.ActiveCfg = Release|Win32
 		{83C7B159-997C-48E7-B6EF-66F9F0A2B64E}.Release|x86.Build.0 = Release|Win32
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Debug|x64.ActiveCfg = Debug|x64
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Debug|x64.Build.0 = Debug|x64
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Debug|x86.ActiveCfg = Debug|Win32
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Debug|x86.Build.0 = Debug|Win32
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Release|x64.ActiveCfg = Release|x64
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Release|x64.Build.0 = Release|x64
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Release|x86.ActiveCfg = Release|Win32
+		{C2095336-E7D5-42E8-B80E-20C6F414BA58}.Release|x86.Build.0 = Release|Win32
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Debug|x64.ActiveCfg = Debug|x64
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Debug|x64.Build.0 = Debug|x64
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Debug|x86.ActiveCfg = Debug|Win32
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Debug|x86.Build.0 = Debug|Win32
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Release|x64.ActiveCfg = Release|x64
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Release|x64.Build.0 = Release|x64
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Release|x86.ActiveCfg = Release|Win32
+		{F0F230D7-2523-40D7-AB42-110E66C14CD9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
