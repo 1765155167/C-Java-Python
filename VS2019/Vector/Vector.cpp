@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <vector>
+#include <vector>//单口容器，尾端插入尾端提取
 #include <algorithm>
 
 class Person {
@@ -146,6 +146,10 @@ void test04()
 {
 	std::vector<size_t> v;
 	v.reserve(100000);//提前告诉容器需要100000空间、避免容器多次动态增长空间
+	//reserve只是声明一下要存放100000元素，无法通过v[100000]访问
+	//v[90001] = 100;//报错
+	//v.resize(100000);//初始化100000
+	
 	size_t* addr = NULL;
 	int num = 0;
 	for (size_t i = 0; i < 100000; i++)
@@ -171,7 +175,7 @@ void test04()
 //赋值内容到新空间中并释放原来的空间
 int main()
 {
-	test02();
+	test04();
 	return 0;
 }
 

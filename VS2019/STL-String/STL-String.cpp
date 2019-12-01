@@ -50,7 +50,9 @@ void test03()
 	std::string type;
 	//find查找第一次出现的位置
 	//rfing查找最后一次出现的位置
-	type.append(s1, s1.find('@') + 1, s1.find('.') - s1.find('@') - 1);
+	//type.append(s1, s1.find('@') + 1, s1.find('.') - s1.find('@') - 1);
+	//substr求子串
+	type = s1.substr(s1.find('@') + 1, s1.find('.') - s1.find('@') - 1);
 	name.append(s1,0,s1.find('@'));
 	std::cout << type << std::endl;
 	std::cout << name << std::endl;
@@ -73,7 +75,7 @@ void test04()
 
 int main()
 {
-	test04();
+	test03();
 	return 0;
 }
 
