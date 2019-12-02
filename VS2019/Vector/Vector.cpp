@@ -29,6 +29,7 @@ void add1(T& a)
 template<class T>
 void printInfo(T& a)
 {
+	std::cout.setf(std::ios::left);
 	std::cout << std::setw(2) << a << " ";
 }
 
@@ -43,8 +44,13 @@ void test01()
 	//auto start = v.begin();
 	std::vector<int>::iterator start = v.begin();
 	auto end = v.end();
+	for_each(start, end, printInfo<int>);
+	std::cout << std::endl;
 	for_each(start, end, add1<int>);
 	for_each(start, end, printInfo<int>);
+	std::cout << std::endl;
+	std::cout << "front:" << v.front() << std::endl;
+	std::cout << "back:" << v.back() << std::endl;
 	std::cout << std::endl;
 }
 
@@ -175,7 +181,7 @@ void test04()
 //赋值内容到新空间中并释放原来的空间
 int main()
 {
-	test04();
+	test01();
 	return 0;
 }
 

@@ -26,7 +26,9 @@ void test01()
 	s.insert(1);
 	s.insert(5);
 	s.insert(4);
+	//s.erase(5);
 	//s.erase(s.begin());
+	//s.erase(s.begin(), s.end());
 	auto it = s.begin();
 	for (; it != s.end(); it++)
 	{
@@ -160,7 +162,7 @@ void test04()
 
 int main()
 {
-	test04();
+	test01();
 	return 0;
 }
 

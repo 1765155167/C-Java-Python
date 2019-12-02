@@ -23,6 +23,7 @@ int main()
 	std::cout << "size:" << s.size() << std::endl;
 	while (!s.empty())
 	{
+		s.top() += 10;
 		std::cout << s.top() << " ";
 		s.pop();
 	}
