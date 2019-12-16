@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (企业链表.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  LinkList.c
+C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019-C++算法\动态数组-vector\企业链表-C\LinkList.c(117,10): warning C4013: “strcpy_s”未定义；假设外部返回 int
+  企业链表-C.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019-C++算法\动态数组-vector\Debug\企业链表-C.exe

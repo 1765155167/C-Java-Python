@@ -1,0 +1,3 @@
+﻿  LinkList.c
+C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019-C++算法\动态数组-vector\企业链表\LinkList.c(117,10): warning C4013: “strcpy_s”未定义；假设外部返回 int
+  企业链表.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019-C++算法\动态数组-vector\Debug\企业链表.exe
