@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ServiceDemo</string>
+    <string name="button1">启动service</string>
+    <string name="button2">停止service</string>
+    <string name="button3">启动IntentService</string>
+    <string name="button4">停止IntentService</string>
+</resources>

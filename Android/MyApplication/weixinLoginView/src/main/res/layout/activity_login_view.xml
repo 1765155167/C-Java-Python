@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_id"
+        android:paddingBottom="20dp"
+        android:hint="QQ号/微信号/Email"
+        android:drawableLeft="@mipmap/zhanghao"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_password"
+        android:paddingBottom="20dp"
+        android:password="true"
+        android:hint="密码"
+        android:inputType="text"
+        android:drawableLeft="@mipmap/mima"/>
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:textColor="#FFFFFF"
+        android:background="#FF009688"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录遇到问题？"
+        android:paddingTop="20dp"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>

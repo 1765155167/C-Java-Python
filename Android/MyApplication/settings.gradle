@@ -1,0 +1,2 @@
+include ':app', ':weixinLoginView', ':Friend', ':servicedemo', ':playermusic', ':boundservice', ':mqttclient', ':intentdemo', ':eventdemo'
+rootProject.name='My Application'

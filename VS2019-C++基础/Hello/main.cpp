@@ -38,13 +38,13 @@ long long int Fibonacci2(size_t n)
 	return fibNum;
 }
 
-int main()
+void test01()
 {
 	char* data = new char[20];
 	char hello[] = "Hello ";
 	char world[] = "world";
 	memset(data, 0, 20);
-	
+
 	strcat_s(data, 20, hello);
 	strcat_s(data, 20, world);
 	std::cout << "sizeof(data) = " << sizeof(data) << std::endl;
@@ -69,5 +69,31 @@ int main()
 	std::cout << "a = " << a << std::endl;
 	std::cout << "Max(10, 2) = " << Max(10, 2) << std::endl;
 	delete[]data;
+}
+
+void func(int a)
+{
+	std::cout << "int a" << a << std::endl;
+}
+
+template<typename DstT, typename SrcT>
+DstT c_static_case(SrcT data)
+{
+	return (DstT)data;
+}
+
+template<typename T, int len>
+struct Array {
+	T data[len];
+};
+
+int main()
+{
+	struct Array<int, 20> arr;
+	for (size_t i = 0; i < 20; i++)
+	{
+		arr.data[i] = rand() % 100;
+	}
+	std::cout << arr.data << std::endl;
 	return 0;
 }

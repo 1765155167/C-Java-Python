@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">IntentDemo</string>
+    <string name="text">你好！这是详情信息</string>
+</resources>

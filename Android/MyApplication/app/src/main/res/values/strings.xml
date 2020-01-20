@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="button_one">转移到活动2</string>
+    <string name="button_two">打开哔哩哔哩</string>
+    <string name="button_three">打开活动三</string>
+    <string name="button_four">打开百度</string>
+    <string name="button_five">打开qq音乐</string>
+    <string name="add_Item">Add</string>
+    <string name="remove_item">Remove</string>
+    <string name="phone">Phone</string>
+</resources>
