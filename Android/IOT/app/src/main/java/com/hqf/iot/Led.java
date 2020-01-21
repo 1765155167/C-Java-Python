@@ -1,5 +1,7 @@
 package com.hqf.iot;
 
+import com.google.gson.Gson;
+
 public class Led {
 
     private int id;
@@ -27,11 +29,24 @@ public class Led {
         this.id = id;
     }
 
-    public void setLed() {
-        this.on = true;
+    public void setLed(MyMQTTService myMQTTService) {
+        if(this.on != true) {
+            this.on = true;
+        }
+        publicMessage(myMQTTService);
+        //Student student2 = gson.fromJson(json, Student.class);
     }
 
-    public void closeLed() {
-        this.on = false;
+    public void closeLed(MyMQTTService myMQTTService) {
+        if(this.on != false) {
+            this.on = false;
+        }
+        publicMessage(myMQTTService);
+    }
+
+    private void publicMessage(MyMQTTService myMQTTService) {
+        Gson gson = new Gson();
+        String json = gson.toJson(Led.this);
+        myMQTTService.publishMessage(json);
     }
 }
