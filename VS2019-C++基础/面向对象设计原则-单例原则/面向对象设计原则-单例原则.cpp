@@ -43,7 +43,7 @@ private:
 	int a;
 };
 TaskManager* TaskManager::task = NULL;
-//饿汉式：不管需不需要使用该类在main函数只想前就定义该类对象
+//饿汉式：不管需不需要使用该类在main函数执行前就定义该类对象
 //TaskManager* TaskManager::task = new TaskManager;
 int main()
 {

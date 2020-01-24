@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--父布局
+        layout_alignParentTop：顶部对齐
+        layout_alignParentBottom：底部对齐
+        layout_alignParentLeft：左对齐
+        layout_alignParentRight：右对齐
+        layout_centerInParent：居中
+    -->
+    <Button
+        android:id="@+id/third_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textAllCaps="false"
+        android:text="Button 1"/>
+    <Button
+        android:id="@+id/third_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textAllCaps="false"
+        android:text="Button 2"/>
+    <Button
+        android:id="@+id/third_button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAllCaps="false"
+        android:text="Button 3"/>
+    <Button
+        android:id="@+id/third_button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:textAllCaps="false"
+        android:text="Button 4"/>
+    <Button
+        android:id="@+id/third_button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textAllCaps="false"
+        android:text="Button 5"/>
+</RelativeLayout>

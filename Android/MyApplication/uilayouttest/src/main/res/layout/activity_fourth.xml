@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--控件
+        layout_alignTop：与控件顶部对齐
+        layout_above：位于控件上方
+        layout_Bottom：与控件底部对齐
+        layout_bellow：位于控件下方
+        layout_alignLeft：与控件左对齐
+        layout_toLeftOf：位于控件左方
+        layout_alignRight：与控件右对齐
+        layout_toRightOf：位于控件右方
+    -->
+    <Button
+        android:id="@+id/fourth_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fourth_button3"
+        android:layout_toLeftOf="@id/fourth_button3"
+        android:textAllCaps="false"
+        android:text="Button 1"/>
+    <Button
+        android:id="@+id/fourth_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fourth_button3"
+        android:layout_toRightOf="@id/fourth_button3"
+        android:textAllCaps="false"
+        android:text="Button 2"/>
+    <Button
+        android:id="@+id/fourth_button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAllCaps="false"
+        android:text="Button 3"/>
+    <Button
+        android:id="@+id/fourth_button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fourth_button3"
+        android:layout_toLeftOf="@id/fourth_button3"
+        android:textAllCaps="false"
+        android:text="Button 4"/>
+    <Button
+        android:id="@+id/fourth_button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fourth_button3"
+        android:layout_toRightOf="@id/fourth_button3"
+        android:textAllCaps="false"
+        android:text="Button 5"/>
+    <Button
+        android:id="@+id/fourth_button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fourth_button3"
+        android:layout_alignLeft="@id/fourth_button3"
+        android:textAllCaps="false"
+        android:text="Button 6"/>
+</RelativeLayout>

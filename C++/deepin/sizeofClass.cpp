@@ -1,13 +1,16 @@
 #include <iostream>
 class Empty {};
 class HoldsAnInt {
-    int x;
-    Empty e;
+    Empty e1;
+	Empty e2;
+	int x;
+	Empty e3;
+	Empty e4;
 };
 int main()
 {
     HoldsAnInt hold;
-    std::cout << "sizeof(HoldsAnInt)" << sizeof(hold) << std::endl;
+    std::cout << "sizeof(HoldsAnInt)" << sizeof(hold) << ":" << sizeof(Empty) << std::endl;
     return 0;
 }
 

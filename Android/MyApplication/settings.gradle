@@ -1,2 +1,2 @@
-include ':app', ':weixinLoginView', ':Friend', ':servicedemo', ':playermusic', ':boundservice', ':mqttclient', ':intentdemo', ':eventdemo'
+include ':app', ':weixinLoginView', ':Friend', ':servicedemo', ':playermusic', ':boundservice', ':mqttclient', ':intentdemo', ':eventdemo', ':uidemo', ':uilayouttest', ':uicustomviews', ':layouteditor', ':listview'
 rootProject.name='My Application'

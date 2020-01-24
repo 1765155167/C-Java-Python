@@ -56,11 +56,11 @@ private:
 int main()
 {
 	/*只能指针不需要手动释放内存*/
-	//std::auto_ptr<MyClass> ptr(new MyClass);
-	//ptr->show();
-	MyAutoPtr<MyClass> ptr(new MyClass);
+	std::auto_ptr<MyClass> ptr(new MyClass);
 	ptr->show();
-	(*ptr).show();
+	/*MyAutoPtr<MyClass> ptr(new MyClass);
+	ptr->show();
+	(*ptr).show();*/
     std::cout << "Hello World!\n";
 }
 
