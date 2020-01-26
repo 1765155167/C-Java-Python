@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class BinderService extends Service {
         // TODO: Return the communication channel to the service.
         return new MyBinder();//用于与Activity实时通信
     }
+
     //自定义生成随机数方法
     public List getRandomNumber() {
         List resArr = new ArrayList();

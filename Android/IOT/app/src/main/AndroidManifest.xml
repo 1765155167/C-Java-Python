@@ -20,12 +20,13 @@
             android:name=".MyMQTTService"
             android:enabled="true"
             android:exported="true"></service>
-        <service
-            android:name=".MqttService"
-            android:enabled="true"
-            android:exported="true" />
 
-        <activity android:name=".MenuActivity" />
+        <activity android:name=".MenuActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.ACTIVITY_PARENT"
+                android:value=".MainActivity">
+            </meta-data>
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

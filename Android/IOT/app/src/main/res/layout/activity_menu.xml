@@ -1,63 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:visibility="visible"
     tools:context=".MenuActivity"
     tools:visibility="visible">
+
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center_horizontal"
         android:text="led flage"
         android:textSize="24sp"
-        android:layout_margin="10dp"/>
-    <RelativeLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/ledView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginTop="16dp"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/ledView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <ImageButton
-            android:id="@+id/ledView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/play" />
+    <ImageButton
+        android:id="@+id/ledView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/ledView3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ledView1"
+        app:layout_constraintTop_toTopOf="@+id/ledView1" />
 
-        <ImageButton
-            android:id="@+id/ledView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ledView1"
-            android:src="@drawable/play" />
+    <ImageButton
+        android:id="@+id/ledView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/ledView4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ledView2"
+        app:layout_constraintTop_toTopOf="@+id/ledView2" />
 
-        <ImageButton
-            android:id="@+id/ledView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ledView2"
-            android:src="@drawable/play" />
+    <ImageButton
+        android:id="@+id/ledView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/ledView5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ledView3"
+        app:layout_constraintTop_toTopOf="@+id/ledView3" />
 
-        <ImageButton
-            android:id="@+id/ledView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ledView3"
-            android:src="@drawable/play" />
+    <ImageButton
+        android:id="@+id/ledView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/ledView6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ledView4"
+        app:layout_constraintTop_toTopOf="@+id/ledView4" />
 
-        <ImageButton
-            android:id="@+id/ledView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ledView4"
-            android:src="@drawable/play" />
+    <ImageButton
+        android:id="@+id/ledView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ledView5"
+        app:layout_constraintTop_toTopOf="@+id/ledView5" />
 
-        <ImageButton
-            android:id="@+id/ledView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/ledView5"
-            android:src="@drawable/play" />
-    </RelativeLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

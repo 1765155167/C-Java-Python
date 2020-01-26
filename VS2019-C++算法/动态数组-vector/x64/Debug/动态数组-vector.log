@@ -1,0 +1,15 @@
+﻿  vector.cpp
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.cpp(30,23): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.h(76,18): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.h(71): message : 在编译 类 模板 成员函数“vector<int>::vector(T *,T *)”时
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.h(71): message :         with
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.h(71): message :         [
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.h(71): message :             T=int
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.h(71): message :         ]
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.cpp(6): message : 查看对正在编译的函数 模板 实例化“vector<int>::vector(T *,T *)”的引用
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.cpp(6): message :         with
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.cpp(6): message :         [
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.cpp(6): message :             T=int
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.cpp(6): message :         ]
+C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\动态数组-vector\vector.cpp(6): message : 查看对正在编译的 类 模板 实例化“vector<int>”的引用
+  动态数组-vector.vcxproj -> C:\Users\17651\Desktop\C-Java-Python\VS2019-C++算法\x64\Debug\动态数组-vector.exe

@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.hqf.iot.debug.ToastNew;
+import com.hqf.iot.device.Device;
+import com.hqf.iot.device.Led;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
@@ -23,7 +26,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MenuActivity extends AppCompatActivity {
     private static final String TAG = "MenuActivity";
     MyMQTTService myMQTTService;
-    public static Led[] led = new Led[6];
+    public Led[] led = new Led[6];
 
     private void ledInit() {
         led[0] = new Led(R.id.ledView1);
@@ -54,18 +57,18 @@ public class MenuActivity extends AppCompatActivity {
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-        int id = ((ImageView)v).getId();
-        for (int i = 0; i < led.length; i++) {
-            if(id == led[i].getId()) {
-                if(!led[i].isOn()) {
-                    led[i].setLed(myMQTTService);
-                    ((ImageView)v).setImageResource(R.drawable.play);
-                } else {
-                    led[i].closeLed(myMQTTService);
-                    ((ImageView)v).setImageResource(R.drawable.stop);
+            int id = ((ImageView) v).getId();
+            for (int i = 0; i < led.length; i++) {
+                if (id == led[i].getId()) {
+                    if (!led[i].isOpen()) {
+                        led[i].setOpen(myMQTTService);
+                        ((ImageView) v).setImageResource(R.drawable.play);
+                    } else {
+                        led[i].setClose(myMQTTService);
+                        ((ImageView) v).setImageResource(R.drawable.stop);
+                    }
                 }
             }
-        }
         }
     };
 
@@ -73,7 +76,7 @@ public class MenuActivity extends AppCompatActivity {
     ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            myMQTTService = ((MyMQTTService.MyBinder)service).getService();
+            myMQTTService = ((MyMQTTService.MyBinder) service).getService();
             myMQTTService.init(mqttCallbackExtended);
             Log.i(TAG, "onServiceConnected: ok");
         }
@@ -98,31 +101,14 @@ public class MenuActivity extends AppCompatActivity {
         public void messageArrived(String topic, MqttMessage message) throws Exception {
             //收到消息
             String info = new String(message.getPayload());
-            Toast.makeText(myMQTTService, info, Toast.LENGTH_SHORT).show();
-            Gson json = new Gson();
-            Led led_set = json.fromJson(info, Led.class);
-            for (int i = 0; i < led.length; i++) {
-                if (led_set.getId() == led[i].getId()) {
-                    if (led_set.isOn() != led[i].isOn()) {
-                        ImageView imageView = (ImageView)findViewById(led[i].getId());
-                        if (led_set.isOn()) {
-                            led[i].setLed(myMQTTService);
-                             imageView.setImageResource(R.drawable.play);
-                            Toast.makeText(MenuActivity.this, "开灯" + String.valueOf(i), Toast.LENGTH_SHORT).show();
-                        } else {
-                            led[i].closeLed(myMQTTService);
-                            imageView.setImageResource(R.drawable.stop);
-                            Toast.makeText(MenuActivity.this, "关灯" + String.valueOf(i), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            }
+            infoProcess(info);
         }
 
         @Override
         public void deliveryComplete(IMqttDeliveryToken token) {
         }
     };
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -134,5 +120,33 @@ public class MenuActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         unbindService(conn);
+    }
+
+    private void infoProcess(String message) {
+        makeToast(message);
+        Gson json = new Gson();
+        Device dev = json.fromJson(message, Device.class);
+        if (dev.getDevType() == Device.DeviceType.LED) {
+            for (int i = 0; i < led.length; i++) {
+                if (dev.getId() == led[i].getId()) {
+                    ImageView imageView = (ImageView) findViewById(led[i].getId());
+                    if (dev.isOpen()) {
+                        led[i].setOpen(myMQTTService);
+                        imageView.setImageResource(R.drawable.play);
+                        makeToast("开灯");
+                    } else {
+                        led[i].setClose(myMQTTService);
+                        imageView.setImageResource(R.drawable.stop);
+                        makeToast("关灯");
+                    }
+                }
+            }
+        } else if (dev.getDevType() == Device.DeviceType.DOOR) {
+
+        }
+    }
+
+    private void makeToast(String info) {
+        ToastNew.makeText(MenuActivity.this, info, Toast.LENGTH_SHORT).show();
     }
 }

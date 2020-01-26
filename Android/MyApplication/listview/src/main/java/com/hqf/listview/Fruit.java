@@ -10,7 +10,7 @@ public class Fruit implements Serializable{
         this.imageId = imageId;
         this.Name = Name;
     }
-    
+
 
     public int getImageId() {
         return imageId;
