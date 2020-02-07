@@ -15,9 +15,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/login_password"
         android:paddingBottom="20dp"
-        android:password="true"
         android:hint="密码"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:drawableLeft="@mipmap/mima"/>
     <Button
         android:id="@+id/login_button"

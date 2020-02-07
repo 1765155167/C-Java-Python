@@ -21,13 +21,13 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MyMQTTService extends Service {
     MqttAndroidClient mqttAndroidClient;
     private static final String TAG = "MyMQTTService";
-    final String serverUri = "tcp://192.168.0.106:1883";
+    //final String serverUri = "tcp://192.168.0.102:1883";
     String clientId = "hqf";
     final String subscriptionTopic = "/Subscription/Topic";
     final String publishTopic = "/Publish/Topic";//推送主题
-    //final String publishMessage = "Hello World!";//推送信息
-    public MyMQTTService() {
-    }
+//    final String subscriptionTopic = "/Publish/Topic";
+//    final String publishTopic = "/Subscription/Topic";//推送主题
+    public MyMQTTService() { }
 
     public class MyBinder extends Binder {
         public MyMQTTService getService() {
@@ -52,7 +52,7 @@ public class MyMQTTService extends Service {
         super.onDestroy();
     }
 
-    public void init(MqttCallbackExtended mqttCallbackExtended) {
+    public void init(MqttCallbackExtended mqttCallbackExtended, String serverUri) {
         //新建client实例
         clientId = clientId + System.currentTimeMillis();
         mqttAndroidClient = new MqttAndroidClient(getApplicationContext(), serverUri, clientId);
@@ -82,6 +82,7 @@ public class MyMQTTService extends Service {
             ex.printStackTrace();
         }
     }
+
     public void subscribeToTopic() {
         try {
             //开始订阅
@@ -101,6 +102,7 @@ public class MyMQTTService extends Service {
             ex.printStackTrace();
         }
     }
+
     /*推送消息*/
     public void publishMessage(String publicMessage){
 
@@ -118,7 +120,25 @@ public class MyMQTTService extends Service {
         }
     }
 
+    /*推送消息*/
+    public void publishMessage(byte[] publicMessage){
+
+        try {
+            MqttMessage message = new MqttMessage();
+            message.setPayload(publicMessage);
+            mqttAndroidClient.publish(publishTopic, message);
+            //addToHistory("Message Published");
+            if(!mqttAndroidClient.isConnected()){
+                //addToHistory(mqttAndroidClient.getBufferedMessageCount() + " messages in buffer.");
+                makeToast("推送消息失败");
+            }
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void makeToast(String str) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
+
 }

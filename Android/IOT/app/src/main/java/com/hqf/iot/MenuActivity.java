@@ -18,14 +18,18 @@ import com.google.gson.Gson;
 import com.hqf.iot.debug.ToastNew;
 import com.hqf.iot.device.Device;
 import com.hqf.iot.device.Led;
+import com.hqf.iot.infoManager.InfoCheck;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.text.Format;
+
 public class MenuActivity extends AppCompatActivity {
     private static final String TAG = "MenuActivity";
     MyMQTTService myMQTTService;
+    String serverUri;
     public Led[] led = new Led[6];
 
     private void ledInit() {
@@ -46,29 +50,33 @@ public class MenuActivity extends AppCompatActivity {
             final ImageButton ledView = (ImageButton) findViewById(led[i].getId());
             ledView.setOnClickListener(clickListener);
         }
+        Intent intent = getIntent();
+        serverUri = intent.getStringExtra("TCP");
+        Toast.makeText(MenuActivity.this, serverUri, Toast.LENGTH_LONG).show();
     }
 
     //启动本活动方法
-    public static void actionStart(Context context) {
+    public static void actionStart(Context context, String serverUri) {
         Intent intent = new Intent(context, MenuActivity.class);
+        intent.putExtra("TCP", serverUri);
         context.startActivity(intent);
     }
 
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            int id = ((ImageView) v).getId();
-            for (int i = 0; i < led.length; i++) {
-                if (id == led[i].getId()) {
-                    if (!led[i].isOpen()) {
-                        led[i].setOpen(myMQTTService);
-                        ((ImageView) v).setImageResource(R.drawable.play);
-                    } else {
-                        led[i].setClose(myMQTTService);
-                        ((ImageView) v).setImageResource(R.drawable.stop);
-                    }
+        int id = ((ImageView) v).getId();
+        for (int i = 0; i < led.length; i++) {
+            if (id == led[i].getId()) {
+                if (!led[i].isOpen()) {
+                    led[i].setOpen(myMQTTService);
+                    ((ImageView) v).setImageResource(R.drawable.play);
+                } else {
+                    led[i].setClose(myMQTTService);
+                    ((ImageView) v).setImageResource(R.drawable.stop);
                 }
             }
+        }
         }
     };
 
@@ -77,7 +85,7 @@ public class MenuActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             myMQTTService = ((MyMQTTService.MyBinder) service).getService();
-            myMQTTService.init(mqttCallbackExtended);
+            myMQTTService.init(mqttCallbackExtended, serverUri);
             Log.i(TAG, "onServiceConnected: ok");
         }
 
@@ -100,8 +108,14 @@ public class MenuActivity extends AppCompatActivity {
         @Override
         public void messageArrived(String topic, MqttMessage message) throws Exception {
             //收到消息
-            String info = new String(message.getPayload());
-            infoProcess(info);
+            byte[] readMessage = message.getPayload();
+            InfoCheck.Format format = InfoCheck.infoDecrypt(readMessage);
+            if (format.ack_byte == InfoCheck.ACK_NEED) {
+                InfoCheck.sendAck(myMQTTService);
+            }
+            if (format.tye == InfoCheck.INFO_STR) {
+                infoProcess(new String(format.data));
+            }
         }
 
         @Override
@@ -121,14 +135,15 @@ public class MenuActivity extends AppCompatActivity {
         super.onStop();
         unbindService(conn);
     }
-
+    //接收到的信息处理函数
     private void infoProcess(String message) {
         makeToast(message);
         Gson json = new Gson();
         Device dev = json.fromJson(message, Device.class);
-        if (dev.getDevType() == Device.DeviceType.LED) {
+        if (dev.getDevType().equals(Device.DeviceType.LED)) {
             for (int i = 0; i < led.length; i++) {
                 if (dev.getId() == led[i].getId()) {
+                    makeToast(led[i].getDevType());
                     ImageView imageView = (ImageView) findViewById(led[i].getId());
                     if (dev.isOpen()) {
                         led[i].setOpen(myMQTTService);
@@ -147,6 +162,6 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void makeToast(String info) {
-        ToastNew.makeText(MenuActivity.this, info, Toast.LENGTH_SHORT).show();
+        ToastNew.makeText(MenuActivity.this, info, Toast.LENGTH_LONG).show();
     }
 }

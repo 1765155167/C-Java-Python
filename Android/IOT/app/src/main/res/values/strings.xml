@@ -2,4 +2,5 @@
     <string name="app_name">IOT</string>
     <string name="welcome">智能家居系统</string>
     <string name="version">1.0.0</string>
+    <string name="edit_ip">ip address</string>
 </resources>

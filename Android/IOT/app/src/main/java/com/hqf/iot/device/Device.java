@@ -2,6 +2,7 @@ package com.hqf.iot.device;
 
 import com.google.gson.Gson;
 import com.hqf.iot.MyMQTTService;
+import com.hqf.iot.infoManager.InfoCheck;
 
 public class Device {
     private String devType;
@@ -52,6 +53,7 @@ public class Device {
     private void publicMessage(MyMQTTService myMQTTService) {
         Gson gson = new Gson();
         String json = gson.toJson(Device.this);
-        myMQTTService.publishMessage(json);
+        byte[] publicMessage = InfoCheck.infoEncryption(json.getBytes(), (byte)InfoCheck.ACK_NO_NEED, (byte)InfoCheck.INFO_STR);
+        myMQTTService.publishMessage(publicMessage);
     }
 }
