@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+        android:icon="@mipmap/bilibili_home"
+        android:title="@string/home" />
+    <item android:id="@+id/channel"
+        android:icon="@mipmap/bilibili_channel"
+        android:title="@string/channel" />
+    <item android:id="@+id/dynamic"
+        android:icon="@mipmap/bilibili_dynamic"
+        android:title="@string/dynamic" />
+    <item android:id="@+id/member_purchase"
+        android:icon="@mipmap/bilibili_member_purchase"
+        android:title="@string/member_purchase" />
+</menu>

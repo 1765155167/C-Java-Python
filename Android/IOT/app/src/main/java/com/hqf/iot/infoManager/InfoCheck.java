@@ -1,8 +1,12 @@
 package com.hqf.iot.infoManager;
 
+import android.util.Log;
+
 import com.hqf.iot.MyMQTTService;
+import com.hqf.iot.debug.LogUntil;
 
 public class InfoCheck {
+    private static final String TAG = "InfoCheck";
     final public static byte ACK_NEED = 0;
     final public static byte ACK_NO_NEED = 1;
     final public static byte ACK_ACK = 3;
@@ -100,7 +104,7 @@ public class InfoCheck {
         format.tye = data[6];
         crc = getCrc8(data, 4, len - 5, (byte) 0);
         if (crc != data[len - 1] || data.length != len) {
-            System.out.println("校验错误计算crc:" + crc + " crc:" + data[len - 1]);
+            LogUntil.d(TAG, "校验错误计算crc:" + crc + " crc:" + data[len - 1]);
             return null;
         }
         format.data = new byte[len - 8];

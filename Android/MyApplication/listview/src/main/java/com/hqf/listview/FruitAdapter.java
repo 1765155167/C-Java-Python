@@ -32,7 +32,7 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         if (convertView == null) {
             //view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
             view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
-           viewHolder = new ViewHolder();
+			viewHolder = new ViewHolder();
             viewHolder.imageView = (ImageView) view.findViewById(R.id.image_view);
             viewHolder.textView = (TextView) view.findViewById(R.id.text_view);
             view.setTag(viewHolder);

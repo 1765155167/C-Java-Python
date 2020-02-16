@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/nav_background"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/list"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="onClick"
+        android:src="@mipmap/title_image" />
+
+    <ImageView
+        android:id="@+id/scan"
+        android:layout_width="@dimen/title_size"
+        android:layout_height="@dimen/title_size"
+        android:layout_alignTop="@+id/list"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:onClick="onClick"
+        android:src="@mipmap/title_game" />
+
+    <ImageView
+        android:id="@+id/many"
+        android:layout_width="@dimen/title_size"
+        android:layout_height="@dimen/title_size"
+        android:layout_alignTop="@+id/list"
+        android:layout_marginLeft="20dp"
+        android:layout_toLeftOf="@+id/scan"
+        android:onClick="onClick"
+        android:src="@mipmap/title_download" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/b_many"
+        android:layout_alignLeft="@+id/list"
+        android:text="陪你到0世界尽头"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/b_many"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/list"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:text="B币：0.0"
+        android:textColor="@color/white_66" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/b_many"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/b_many"
+        android:text="硬币：102"
+        android:textColor="@color/white_66" />
+</RelativeLayout>

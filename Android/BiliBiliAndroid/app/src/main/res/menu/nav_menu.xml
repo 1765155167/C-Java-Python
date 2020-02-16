@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/home"
+            android:icon="@mipmap/bilibili_home"
+            android:title="@string/home" />
+        <item android:id="@+id/download"
+            android:icon="@mipmap/title_download"
+            android:title="@string/download" />
+    </group>
+</menu>

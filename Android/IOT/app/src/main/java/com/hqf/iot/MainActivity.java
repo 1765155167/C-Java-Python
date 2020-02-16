@@ -17,20 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //隐藏标题栏
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-
-        editText = (EditText) findViewById(R.id.editText);
+        editText = findViewById(R.id.editText);
         editText.setText("192.168.0.107");
 
-        Button button = (Button)findViewById(R.id.button);
+        Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String serverUri = "tcp://" + editText.getText().toString() +":1883";
                 MenuActivity.actionStart(MainActivity.this, serverUri);
             }

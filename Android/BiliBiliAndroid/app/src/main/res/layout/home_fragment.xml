@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/list"
+            android:layout_width="@dimen/title_size"
+            android:layout_height="@dimen/title_size"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            android:src="@mipmap/title_image" />
+
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_size"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/game"
+            android:layout_toRightOf="@+id/list"
+            android:background="@drawable/shape_edit_box"
+            android:focusable="false"
+            android:onClick="onClick"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
+        <ImageView
+            android:id="@+id/game"
+            android:layout_width="@dimen/title_size"
+            android:layout_height="@dimen/title_size"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/download"
+            android:onClick="onClick"
+            android:src="@mipmap/title_game" />
+
+        <ImageView
+            android:id="@+id/download"
+            android:layout_width="@dimen/title_size"
+            android:layout_height="@dimen/title_size"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/info"
+            android:onClick="onClick"
+            android:src="@mipmap/title_download" />
+
+        <ImageView
+            android:id="@+id/info"
+            android:layout_width="@dimen/title_size"
+            android:layout_height="@dimen/title_size"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:onClick="onClick"
+            android:src="@mipmap/title_infomation" />
+    </RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:tabMode="scrollable"
+        app:tabBackground="@color/white"
+        app:tabSelectedTextColor="@color/colorPrimary"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:layout_margin="10dp"/>
+</LinearLayout>
+
+

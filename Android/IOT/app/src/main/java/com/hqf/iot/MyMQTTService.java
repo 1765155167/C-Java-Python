@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.hqf.iot.debug.ToastNew;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -21,7 +22,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MyMQTTService extends Service {
     MqttAndroidClient mqttAndroidClient;
     private static final String TAG = "MyMQTTService";
-    //final String serverUri = "tcp://192.168.0.102:1883";
     String clientId = "hqf";
     final String subscriptionTopic = "/Subscription/Topic";
     final String publishTopic = "/Publish/Topic";//推送主题
@@ -68,14 +68,14 @@ public class MyMQTTService extends Service {
             mqttAndroidClient.connect(mqttConnectOptions, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    makeToast("连接成功");
+                    ToastNew.makeText("连接成功");
                     //订阅topic
                     subscribeToTopic();
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    makeToast("连接失败");
+                    ToastNew.makeText("连接失败");
                 }
             });
         } catch (MqttException ex) {
@@ -89,15 +89,14 @@ public class MyMQTTService extends Service {
             mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
-                    makeToast("成功订阅到" + subscriptionTopic);
+                    ToastNew.makeText("成功订阅到" + subscriptionTopic);
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                    makeToast("订阅失败" + subscriptionTopic);
+                    ToastNew.makeText("订阅失败" + subscriptionTopic);
                 }
             });
-
         } catch (MqttException ex) {
             ex.printStackTrace();
         }
@@ -113,7 +112,7 @@ public class MyMQTTService extends Service {
             //addToHistory("Message Published");
             if(!mqttAndroidClient.isConnected()){
                 //addToHistory(mqttAndroidClient.getBufferedMessageCount() + " messages in buffer.");
-                makeToast("推送消息失败");
+                ToastNew.makeText("推送消息失败");
             }
         } catch (MqttException e) {
             e.printStackTrace();
@@ -130,15 +129,11 @@ public class MyMQTTService extends Service {
             //addToHistory("Message Published");
             if(!mqttAndroidClient.isConnected()){
                 //addToHistory(mqttAndroidClient.getBufferedMessageCount() + " messages in buffer.");
-                makeToast("推送消息失败");
+                ToastNew.makeText("推送消息失败");
             }
         } catch (MqttException e) {
             e.printStackTrace();
         }
-    }
-
-    private void makeToast(String str) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
 }

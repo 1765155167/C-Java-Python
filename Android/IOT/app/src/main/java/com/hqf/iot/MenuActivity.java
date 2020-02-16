@@ -1,6 +1,9 @@
 package com.hqf.iot;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,11 +12,12 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hqf.iot.debug.ToastNew;
 import com.hqf.iot.device.Device;
@@ -23,8 +27,6 @@ import com.hqf.iot.infoManager.InfoCheck;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-
-import java.text.Format;
 
 public class MenuActivity extends AppCompatActivity {
     private static final String TAG = "MenuActivity";
@@ -45,14 +47,24 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         ledInit();
         for (int i = 0; i < led.length; i++) {
-            final ImageButton ledView = (ImageButton) findViewById(led[i].getId());
+            final ImageButton ledView = findViewById(led[i].getId());
             ledView.setOnClickListener(clickListener);
         }
+        //获取IP地址
         Intent intent = getIntent();
         serverUri = intent.getStringExtra("TCP");
-        Toast.makeText(MenuActivity.this, serverUri, Toast.LENGTH_LONG).show();
+        ToastNew.makeText(serverUri);
     }
 
     //启动本活动方法
@@ -65,18 +77,18 @@ public class MenuActivity extends AppCompatActivity {
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-        int id = ((ImageView) v).getId();
-        for (int i = 0; i < led.length; i++) {
-            if (id == led[i].getId()) {
-                if (!led[i].isOpen()) {
-                    led[i].setOpen(myMQTTService);
-                    ((ImageView) v).setImageResource(R.drawable.play);
-                } else {
-                    led[i].setClose(myMQTTService);
-                    ((ImageView) v).setImageResource(R.drawable.stop);
+            int id = v.getId();
+            for (int i = 0; i < led.length; i++) {
+                if (id == led[i].getId()) {
+                    if (!led[i].isOpen()) {
+                        led[i].setOpen(myMQTTService);
+                        ((ImageView) v).setImageResource(R.drawable.play);
+                    } else {
+                        led[i].setClose(myMQTTService);
+                        ((ImageView) v).setImageResource(R.drawable.stop);
+                    }
                 }
             }
-        }
         }
     };
 
@@ -110,11 +122,15 @@ public class MenuActivity extends AppCompatActivity {
             //收到消息
             byte[] readMessage = message.getPayload();
             InfoCheck.Format format = InfoCheck.infoDecrypt(readMessage);
-            if (format.ack_byte == InfoCheck.ACK_NEED) {
-                InfoCheck.sendAck(myMQTTService);
-            }
-            if (format.tye == InfoCheck.INFO_STR) {
-                infoProcess(new String(format.data));
+            if (format != null) {
+                if (format.ack_byte == InfoCheck.ACK_NEED) {
+                    InfoCheck.sendAck(myMQTTService);
+                }
+                if (format.tye == InfoCheck.INFO_STR) {
+                    infoProcess(new String(format.data));
+                }
+            } else {
+                ToastNew.makeText("接受数据，校验失败！");
             }
         }
 
@@ -135,24 +151,25 @@ public class MenuActivity extends AppCompatActivity {
         super.onStop();
         unbindService(conn);
     }
+
     //接收到的信息处理函数
     private void infoProcess(String message) {
-        makeToast(message);
+        ToastNew.makeText(message);
         Gson json = new Gson();
         Device dev = json.fromJson(message, Device.class);
         if (dev.getDevType().equals(Device.DeviceType.LED)) {
             for (int i = 0; i < led.length; i++) {
                 if (dev.getId() == led[i].getId()) {
-                    makeToast(led[i].getDevType());
-                    ImageView imageView = (ImageView) findViewById(led[i].getId());
+                    ToastNew.makeText(led[i].getDevType());
+                    ImageView imageView = findViewById(led[i].getId());
                     if (dev.isOpen()) {
                         led[i].setOpen(myMQTTService);
-                        imageView.setImageResource(R.drawable.play);
-                        makeToast("开灯");
+                        Glide.with(this).load(R.drawable.play).into(imageView);
+                        ToastNew.makeText("开灯");
                     } else {
                         led[i].setClose(myMQTTService);
-                        imageView.setImageResource(R.drawable.stop);
-                        makeToast("关灯");
+                        Glide.with(this).load(R.drawable.stop).into(imageView);
+                        ToastNew.makeText("关灯");
                     }
                 }
             }
@@ -161,7 +178,15 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    private void makeToast(String info) {
-        ToastNew.makeText(MenuActivity.this, info, Toast.LENGTH_LONG).show();
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
