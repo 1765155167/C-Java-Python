@@ -12,6 +12,43 @@
 
 4. 内容提供器（Content Provider）
 
+# Android 布局
+## 布局公有属性
+1. layout_width 宽
+2. layout_height 高
+3. layout_margin+方位 相对于其他部件距离
+4. padding +方位 内部相对于边框距离
+5. gravity 内容相对于边框
+6. layout_gravity 边框相对于父部件
+## LinterLayout
+1. android:orientation="horizontal" 垂直
+2. android:orientation="vertical" 水平
+## RelativeLayout
+1. 属性值是true或false
+  - android:layout_centerHrizontal 水平居中
+  - android:layout_centerVertical 垂直居中
+  - android:layout_centerInparent 相对于父元素完全居中。
+  - android:layout_alignParentBottom 位于父元素的下边缘
+  - android:layout_alignParentTop 位于父元素的上边缘
+  - android:layout_alignParentLeft 位于父元素的左边缘
+  - android:layout_alignParentRight 位于父元素的右边缘
+2. 属性值是"@id/*"
+  - android:layout_below 在某元素的下方
+  - android:layout_above 在某元素的上方
+  - andorid:layout_toRightOf 在某元素的右方
+  - android:layout_toLeftOf 在某元素的左方
+  - android:layout_alignBottom 和某元素下方对齐
+  - android:layout_alignTop 和某元素上方对齐
+  - android:layout_alignRight 和某元素右方对齐
+  - android:layout_alignLeft 和某元素左方对齐
+3. 属性值是数值
+  - android:layout_marginLeft 离某元素左边缘的距离
+  - android:layout_marginRight 离某元素右边缘的距离
+  - android:layout_marginTop 离某元素上边缘的距离
+  - android:layout_marginBottom 离某元素下边缘的距离
+## FrameLayout
+从左上角开始，后面的会覆盖前面的控件
+
 # Android 启动模式
 1. 系统默认的启动模式:Standard
 在这种模式下，谁启动了这个Activity,那么这个Activity就运行在启动它的那个Activity的任务栈中

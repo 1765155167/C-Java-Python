@@ -1,0 +1,2 @@
+include ':app', ':providertest'
+rootProject.name='ContactsTest'
