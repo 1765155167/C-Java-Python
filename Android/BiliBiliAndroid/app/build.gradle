@@ -36,6 +36,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    //下拉刷新
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     //基础工具库
     implementation "com.github.tamsiree.RxTool:RxKit:v2.4.1"
     //UI库

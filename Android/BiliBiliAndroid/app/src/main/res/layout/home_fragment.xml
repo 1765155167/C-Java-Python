@@ -11,11 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary">
-
         <ImageView
+            android:id="@+id/menu"
+            android:layout_width="15dp"
+            android:layout_height="@dimen/title_size"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_menu"
+            android:layout_alignParentLeft="true"/>
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/list"
             android:layout_width="@dimen/title_size"
             android:layout_height="@dimen/title_size"
+            android:layout_toRightOf="@+id/menu"
+            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:onClick="onClick"
             android:src="@mipmap/title_image" />
@@ -25,8 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/title_size"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/game"
             android:layout_toRightOf="@+id/list"
             android:background="@drawable/shape_edit_box"

@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity  {
         });
 
         //侧边栏条目监听
+        navigationView.setCheckedItem(R.id.home);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.many:
                 Toast.makeText(this, "钱包", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.menu:
             case R.id.list:
                 drawerLayout.openDrawer(GravityCompat.START);
                 Toast.makeText(this, "头像", Toast.LENGTH_SHORT).show();
@@ -137,6 +139,8 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.info:
                 Toast.makeText(this, "信息", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.search_edit:
+                SearchActivity.actionStart(this);
             default:
                 break;
         }

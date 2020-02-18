@@ -6,14 +6,14 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="213dp"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@mipmap/nav_background"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@mipmap/nav_background" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/list"
         android:layout_width="50dp"
         android:layout_height="50dp"

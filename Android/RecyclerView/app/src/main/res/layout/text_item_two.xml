@@ -19,18 +19,19 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/movie_image1"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:id="@+id/movie_name1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:textSize="16sp" />
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/text_view1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textSize="24sp" />
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -47,18 +48,18 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/movie_image2"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:id="@+id/movie_name2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                android:src="@mipmap/ic_launcher" />
 
+            <TextView
+                android:id="@+id/text_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
