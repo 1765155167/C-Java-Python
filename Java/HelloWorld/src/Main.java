@@ -17,7 +17,9 @@ public class Main {
         System.out.println(Integer.toHexString(255));//ff
         System.out.println(Integer.toBinaryString(255));//1111 1111
     }
-
+    public static int maxDemo(int a, int b) {
+        return  a > b ? a:b;
+    }
     static void StringBuilderTest() {
         String[] fields = {"name", "position", "salary"};
         String table = "employee";
