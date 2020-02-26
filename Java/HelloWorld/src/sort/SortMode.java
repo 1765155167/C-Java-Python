@@ -1,5 +1,8 @@
 package sort;
 
+import java.util.Collection;
+import java.util.Collections;
+
 public class SortMode {
     public static <T>
     void bubbleSort(T[] data, Compare<T> compare) {

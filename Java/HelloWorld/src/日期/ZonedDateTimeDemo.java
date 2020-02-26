@@ -16,12 +16,20 @@ public class ZonedDateTimeDemo {
 //        ZonedDateTime zonedDateTime1 = localDateTime.atZone(ZoneId.of("America/New_York"));
 //        System.out.println(zonedDateTime);
 //        System.out.println(zonedDateTime1);
+//
+//        ZonedDateTime zTime = ZonedDateTime.now(ZoneId.of("Asia/Shanghai"));
+//        ZonedDateTime nTime = zTime.withZoneSameInstant(ZoneId.of("America/New_York"));
+//        LocalDateTime lTime = zTime.toLocalDateTime();
+//        System.out.println(zTime);
+//        System.out.println(nTime);
+//        System.out.println(lTime);
 
-        ZonedDateTime zTime = ZonedDateTime.now(ZoneId.of("Asia/Shanghai"));
-        ZonedDateTime nTime = zTime.withZoneSameInstant(ZoneId.of("America/New_York"));
+        ZonedDateTime zTime = ZonedDateTime.now(ZoneId.systemDefault());
         LocalDateTime lTime = zTime.toLocalDateTime();
-        System.out.println(zTime);
+        ZonedDateTime zonedDateTime = lTime.atZone(ZoneId.systemDefault());
+        ZonedDateTime nTime = zTime.withZoneSameInstant(ZoneId.of("America/New_York"));
         System.out.println(nTime);
         System.out.println(lTime);
+        System.out.println(zonedDateTime);
     }
 }

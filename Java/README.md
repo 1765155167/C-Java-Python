@@ -475,3 +475,143 @@ String.matches(String regex);//直接使用String提供的方法 内部是通过
 1. (\d+)(0*) 使用默认（贪婪）前面的数字都被(\d+)匹配 12350000  (\d+?)匹配12350000 (0*)匹配
 2. (\d+?)(0*) 加?代表使用非贪婪模式 12350000  (\d+?)匹配1235 (0*)匹配0000
 ## 搜索和替换
+1. "a, b ;; c".split("[\\,\\;\\s]+"); // { "a", "b", "c" }
+# 编码与算法
+## URL编码
+## 编码规则
+1. 如果字符是A~Z，a~z，0~9以及-、_、.、*，则保持不变；
+2. 如果是其他字符，先转换为UTF-8编码，然后对每个字节以%XX表示。
+- 例如 字符**中**的UTF-8编码是0xe4b8ad，因此，它的URL编码是%E4%B8%AD。URL编码总是大写
+- 在Java中使用URLEncoder对字符出进行URL编码 会将空格编码成+
+- 使用URLDecoder进行解码
+```java
+String encoder = URLEncoder.encode("中文! ", StandardCharsets.UTF_8);//编码 ！随时ASCII码但是也编码成了%21
+System.out.println(encoder);//%E4%B8%AD%E6%96%87%21+
+String decode = URLDecoder.decode(encoder,StandardCharsets.UTF_8);//解码
+System.out.println(decode);//中文! 
+```
+**注意：URL编码只是编码算法不是加密算法**
+## Base64编码
+1. 对二进制进行编码表示成文本格式
+2. 它的原理是把3字节的二进制数据按6bit一组，用4个int整数表示，然后查表，把int整数用索引对应到字符，得到编码后的字符串。
+3. 6位整数的范围总是0~63，所以，能用64个字符表示：字符A~Z对应索引0~25，字符a~z对应索引26~51，字符0~9对应索引52~61，最后两个索引62、63分别用字符+和/表示。
+4. 过高长度不是3的整数倍则在后面加一个或者两个0x00编码后在尾部加一个或者两个=
+5. Base64编码会出现+/=所以不适合放入URL中一种针对URL的Base64编码可以在URL中使用的Base64编码，它仅仅是把+变成-，/变成_
+```java
+byte[] data = new byte[]{(byte) 0xe4, (byte) 0xb8, (byte) 0xad, (byte)0x01, (byte)0x02, (byte)0x7f, (byte)0x00};
+//编码
+String base64Coding = Base64.getEncoder().encodeToString(data);
+//withoutPadding()去除末尾的=
+String base64Coding2 = Base64.getEncoder().withoutPadding().encodeToString(data);
+//针对URl的Base64编码 只是将编码后的+变成-，/变成_
+String base64Url = Base64.getUrlEncoder().encodeToString(data);
+System.out.println(base64Coding);//5LitAQJ/AA==
+System.out.println(base64Coding2);//5LitAQJ/AA
+System.out.println(base64Url);//5LitAQJ_AA==
+//解码，末尾无=也能解码出来
+byte[] decode = Base64.getDecoder().decode(base64Coding2);
+System.out.println(Arrays.toString(decode));//[-28, -72, -83, 1, 2, 127, 0]
+//解URL格式的Base64码
+byte[] urlDecode = Base64.getUrlDecoder().decode(base64Url);
+System.out.println(Arrays.toString(urlDecode));//[-28, -72, -83, 1, 2, 127, 0]
+```
+1. URL编码和Base64编码都是编码算法，它们不是加密算法；
+2. URL编码的目的是把任意文本数据编码为%前缀表示的文本，便于浏览器和服务器处理；
+3. Base64编码的目的是把任意二进制数据编码为文本，但编码后数据量会增加1/3。
+## 哈希算法
+安全的哈希算法时碰撞概率低，很难通过哈希值逆推出原始值
+### 作用
+1. 对任意一组输入数据进行计算，得到一个固定长度的输出摘要
+2. 因为相同的输入永远会得到相同的输出，因此，如果输入被修改了，得到的输出就会不同。就可对文件进行校验
+3. 存储密码时存储的时计算后的哈希值，而不是明文密码， 当输入密码的哈希值与存储的哈希值一致代表密码正确
+### 特点
+1. 相同输入一点过得相同输出
+2. 不同输入大概率得到不同输出
+3. 如果哈希值不同则说明两个对象一定不同，哈希值相同则不一定还需equals()方法进行比较
+### 哈希碰撞
+1. 碰撞不可避免
+2. 一个安全的哈希算法必须满足 碰撞概率低，不能猜测输出(很难通过输出推出输入的才是安全的)
+3. 哈希算法的输出长度越长，碰撞的概率就越低，算法也就约安全
+### 常见的哈希算法
+1. MD5         128bits
+2. SHA-1       160bits
+3. RipeMD-160  160bits
+4. SHA-256     256bits
+5. SHA-512     512bits
+### 彩虹表
+存储常用的指令和对应的哈希值
+这样可有通过查表的形式判断出密码，当然前提条件是你的密码在彩虹表中
+### 加盐处理
+用于抵御彩虹表攻击，就是在密码后加一个随机数，digest = md5(salt+inputPassword)
+### BouncyCastle 哈希算法和加密算法的第三方库
+1. BouncyCastle是一个开源的第三方算法提供商；
+2. BouncyCastle提供了很多Java标准库没有提供的哈希算法和加密算法；
+3. 使用第三方算法前需要通过Security.addProvider()注册。
+[BouncyCastle](https://www.bouncycastle.org/latest_releases.html)
+```java
+MessageDigest md5Digest = MessageDigest.getInstance("MD5");
+md5Digest.update("Hello".getBytes("UTF-8"));
+md5Digest.update("World".getBytes("UTF-8"));
+
+MessageDigest shaDigest = MessageDigest.getInstance("SHA-1");
+shaDigest.update("Hello".getBytes("UTF-8"));
+shaDigest.update("World".getBytes("UTF-8"));
+
+byte[] md5Result = md5Digest.digest();//68e109f0f40ca72a15e05cc22786f8e6
+byte[] shaResult = shaDigest.digest();//db8ac1c259eb89d4a131b253bacfca5f319d54f2
+System.out.println(new BigInteger(1, md5Result).toString(16));//将byte合成一个大整数并转成16进制输出
+System.out.println(new BigInteger(1, shaResult).toString(16));
+/*----------------------------------------------------------*/
+// 注册BouncyCastle:
+Security.addProvider(new BouncyCastleProvider());
+// 按名称正常调用:
+MessageDigest md = MessageDigest.getInstance("RipeMD160");
+md.update("HelloWorld".getBytes("UTF-8"));
+byte[] result = md.digest();
+System.out.println(new BigInteger(1, result).toString(16));
+```
+### Hmac算法 即加盐处理的算法
+#### HmacMD5可以看作带有一个安全的key的MD5。使用HmacMD5而不是用MD5加salt，有如下好处：
+1. HmacMD5使用的key长度是64字节，更安全；
+2. Hmac是标准算法，同样适用于SHA-1等其他哈希算法；
+3. Hmac输出和原有的哈希算法长度一致。
+#### 使用
+使用时需要指定key，我们不会自己指定key，而是通过Java标准库的KeyGenerator生成一个安全的随机的key
+```java
+KeyGenerator keyGenerator = KeyGenerator.getInstance("HmacMD5");
+SecretKey key = keyGenerator.generateKey();//获取key
+byte[] sKey = key.getEncoded();//可以数组 随哈希值一起保存到数据库中 new SecretKeySpec(hkey, "HmacMD5")。
+System.out.println(new BigInteger(1, sKey).toString(16));
+Mac mac = Mac.getInstance("HmacMD5");
+mac.init(key);//设置key
+mac.update("HelloWorld".getBytes());
+byte[] result = mac.doFinal();//获取计算后的哈希值 保存于数据库中与sKey结合进行校验信息
+System.out.println(new BigInteger(1, result).toString(16));
+//校验
+SecretKey key = new SecretKey(byte[] sKey, "HmacMD5");//通过sKey获取key
+```
+### 对称加密算法
+对称加密算法就是传统的用一个密码进行加密和解密
+#### 使用AES加密
+1. 根据算法名称/工作模式/填充模式获取Cipher实例；
+2. 根据算法名称初始化一个SecretKey实例，密钥必须是指定长度；
+3. 使用SerectKey初始化Cipher实例，并设置加密或解密模式；
+4. 传入明文或密文，获得密文或明文。
+```java
+//解密
+private static byte[] decrypt(byte[] key, byte[] encrypted) throws Exception {
+    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");//ECB工作模式需要128位（16字节）密匙
+    SecretKey keySpec = new SecretKeySpec(key, "AES");
+    cipher.init(Cipher.DECRYPT_MODE, keySpec);//
+    return cipher.doFinal(encrypted);
+}
+//加密
+private static byte[] encrypt(byte[] key, byte[] bytes) throws Exception {
+    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+    SecretKey keySpec = new SecretKeySpec(key, "AES");
+    cipher.init(Cipher.ENCRYPT_MODE, keySpec);//
+    return cipher.doFinal(bytes);
+}
+
+
+```
