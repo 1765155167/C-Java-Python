@@ -1,10 +1,13 @@
-package 编码算法;
+package 编码算法.编码;
 
+import org.bouncycastle.jcajce.provider.symmetric.ARC4;
+
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Base64;
 
 public class Base64Demo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
         byte[] data = new byte[]{(byte) 0xe4, (byte) 0xb8, (byte) 0xad, (byte)0x01, (byte)0x02, (byte)0x7f, (byte)0x00};
         //编码
         String base64Coding = Base64.getEncoder().encodeToString(data);
@@ -21,5 +24,10 @@ public class Base64Demo {
         //解URL格式的Base64码
         byte[] urlDecode = Base64.getUrlDecoder().decode(base64Url);
         System.out.println(Arrays.toString(urlDecode));//[-28, -72, -83, 1, 2, 127, 0]
+
+        String encode = Base64.getEncoder().encodeToString("HelloWorld".getBytes("UTF-8"));
+        System.out.println(encode);
+        byte[] decoder = Base64.getDecoder().decode(encode);
+        System.out.println(new String(decoder,"UTF-8"));
     }
 }

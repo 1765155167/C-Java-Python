@@ -1,12 +1,10 @@
-package 编码算法;
+package 编码算法.编码;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.pqc.crypto.MessageEncryptor;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.Security;
-import java.util.Arrays;
 
 public class BouncyCastleDemo {
     public static void main(String[] args) throws Exception {

@@ -600,7 +600,7 @@ SecretKey key = new SecretKey(byte[] sKey, "HmacMD5");//通过sKey获取key
 ```java
 //解密
 private static byte[] decrypt(byte[] key, byte[] encrypted) throws Exception {
-    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");//ECB工作模式需要128位（16字节）密匙
+    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");//ECB工作模式需要128位（16字节）密钥
     SecretKey keySpec = new SecretKeySpec(key, "AES");
     cipher.init(Cipher.DECRYPT_MODE, keySpec);//
     return cipher.doFinal(encrypted);
@@ -612,6 +612,43 @@ private static byte[] encrypt(byte[] key, byte[] bytes) throws Exception {
     cipher.init(Cipher.ENCRYPT_MODE, keySpec);//
     return cipher.doFinal(bytes);
 }
-
-
 ```
+### DH算法
+1. DH算法是一种密钥交换协议，通信双方通过不安全的信道协商密钥，然后进行对称加密传输
+2. 通信算双方有各自的公钥和私钥，然后通过对方的公钥和自己的私钥计算生成密钥
+3. 公钥是公开的，私钥是保密的
+4. 通过KeyPairGenerator生成KeyPair 
+5. KeyPair包含PublicKey与PrivateKey
+### 非对称加密 RSA
+非对称加密相比对称加密的显著优点在于，对称加密需要协商密钥，而非对称加密可以安全地公开各自的公钥，在N个人之间通信的时候：使用非对称加密只需要N个密钥对，每个人只管理自己的密钥对。而使用对称加密需要则需要N*(N-1)/2个密钥，因此每个人需要管理N-1个密钥，密钥管理难度大，而且非常容易泄漏。
+非对称加密的缺点就是运算速度非常慢，比对称加密要慢很多。
+一般使用非对称加密传递密钥，使用对称加密传递文件
+1. A通过对方B的公钥进行加密，对方B收到密文后通过自己的私钥进行解密，所以密文除了B谁都无法解密
+```java
+byte[] publicKey = ...
+byte[] privateKey = ...
+KeyFactory kf = KeyFactory.getInstance("RSA");
+//恢复公钥
+X509EncodeKeySepc pkSepc = new X509EncodeKeySepc(publicKey);
+PublicKey pk = kf.generatorPublic(pkSpec);
+//恢复私钥
+PKCS8EncodeKeySepc skSepc = new PKCS8EncodeKeySepc("RSA");
+PrivateKey sk = kf.generatorPrivate(skSepc);
+```
+**注意：只是用非对称加密无法防止中间人攻击，因为你不确定对方是不是本人**
+### 签名算法
+1. 如果使用私钥加密，那么就可以使用公钥解密，由于所有人都有对方的公钥，所以消息所有人都可以查看，并且知道是谁发的
+2. 此方法用于验证对方身份时使用的
+3. 在实际应用中，签名不是对原始消息进行签名而是哈希值进行签名
+#### 应用
+1. 防止伪造
+2. 防止抵赖
+3. 检测篡改
+#### RSA 签名算法
+#### DSA 签名算法
+#### ECDSA签名 椭圆曲线签名算法
+特点：可以从私钥推出公钥。BouncyCastle提供了ECDSA的完整实现
+#### 数字证书
+1. 数字证书就是集合了多种密码学算法，用于实现数据加解密、身份认证、签名等多种功能的一种安全标准。
+2. 数字证书采用链式签名管理，顶级的Root CA证书已内置在操作系统中。
+3. 数字证书存储的是公钥，可以安全公开，**而私钥必须严格保密**

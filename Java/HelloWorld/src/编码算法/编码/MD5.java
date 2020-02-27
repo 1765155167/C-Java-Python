@@ -1,4 +1,4 @@
-package 编码算法;
+package 编码算法.编码;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

@@ -1,13 +1,10 @@
-package 编码算法;
+package 编码算法.编码;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
-import java.math.BigInteger;
-import java.security.NoSuchAlgorithmException;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Hmac {

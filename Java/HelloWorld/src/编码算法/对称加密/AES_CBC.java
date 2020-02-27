@@ -1,4 +1,4 @@
-package 编码算法;
+package 编码算法.对称加密;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
