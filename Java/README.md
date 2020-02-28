@@ -652,3 +652,54 @@ PrivateKey sk = kf.generatorPrivate(skSepc);
 1. 数字证书就是集合了多种密码学算法，用于实现数据加解密、身份认证、签名等多种功能的一种安全标准。
 2. 数字证书采用链式签名管理，顶级的Root CA证书已内置在操作系统中。
 3. 数字证书存储的是公钥，可以安全公开，**而私钥必须严格保密**
+
+# 多线程
+```java
+//使用lambda语法编写
+new Thread(() -> {
+    System.out.println("start new thread!");
+}).start(); // 启动新线程
+```
+1. 在Java中主线程退出，不影响子线程
+2. Thread.sleep(10);暂停线程10毫秒，转由其他线程运行 需要检测异常
+3. 创建线程是由start()方法完成的 start方法内部有一个private native void start0(); native代表该方法是由JVM内部的C代码实现的
+4. Thread.setPriority(int n); [1,10] 默认5，设置线程优先级 数字越大优先级越高
+## Java中线程状态
+1. New：新创建的线程，尚未执行；
+2. Runnable：运行中的线程，正在执行run()方法的Java代码；
+3. Blocked：运行中的线程，因为某些操作被阻塞而挂起；
+4. Waiting：运行中的线程，因为某些操作在等待中；
+5. Timed Waiting：运行中的线程，因为执行sleep()方法正在计时等待；
+6. Terminated：线程已终止，因为run()方法执行完毕。
+7. join();等待此线程运行结束 join(long) 设置最大等待时间
+8. 线程间共享变量需要使用volatile关键字标记，确保每个线程都能读取到更新后的变量值。
+9. 通过interrupted()请求中断线程 目标线程内部调用isInterrupted()判断来关闭本线程，如果目标线程处于的等待状态则会捕获InterruptedException
+10. 通过线程间共享变量判断，需要使用volatile关键字标记
+## 守护线程
+在Java中只有当所有的线程结束后才会关闭JVM，但是有的线程是定时循环执行的，用户不会通知，想要这部分线程在程序停止时停止就需要将此线程设置成守护线程
+- setDaemon(true)把该线程标记为守护线程
+- 守护线程是为其他线程服务的线程；
+- 所有非守护线程都执行完毕后，虚拟机退出；
+- 守护线程不能持有需要关闭的资源（如打开文件等）。
+## 进程同步
+```java
+//使用synchronized进行创建一个临界区 
+synchronized (Count.lock) {//加锁
+    Count.count--;
+}//解锁
+public synchronized void test(int n) {//使用synchronized修饰成员方法，发相当于加this进行加锁
+    //NS6CZT24XHX3
+}
+public synchronized static void test(int n) {//使用synchronized修饰静态方法，发相当于加Count.class进行加锁
+    //7TPCYB34EYW9
+}
+```
+- 基本类型赋值和引用类型复制是原子性的
+- 多线程同时读写共享变量时，会造成逻辑错误，因此需要通过synchronized同步；
+- 同步的本质就是给指定对象加锁，加锁后才能继续执行后续代码；
+- 注意加锁对象必须是同一个实例；
+- 对JVM定义的单个原子操作不需要同步。
+- 通过合理的封装可以把类变成线程安全的例如StringBuffer
+- 类中是final类型的也是线程安全的例如String Integer 
+- 死锁产生的条件是多线程各自持有不同的锁，并互相试图获取对方已持有的锁，导致无限等待；
+- 避免死锁的方法是多线程获取锁的顺序要一致。
