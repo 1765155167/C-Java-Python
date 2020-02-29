@@ -703,3 +703,144 @@ public synchronized static void test(int n) {//使用synchronized修饰静态方
 - 类中是final类型的也是线程安全的例如String Integer 
 - 死锁产生的条件是多线程各自持有不同的锁，并互相试图获取对方已持有的锁，导致无限等待；
 - 避免死锁的方法是多线程获取锁的顺序要一致。
+## wait notify
+1. 在synchronized内部可以调用wait()使线程进入等待状态；
+2. 必须在已获得的锁对象上调用wait()方法；
+3. 在synchronized内部可以调用notify()或notifyAll()唤醒其他等待线程；
+4. 必须在已获得的锁对象上调用notify()或notifyAll()方法；
+5. 已唤醒的线程还需要重新获得锁后才能继续执行。
+## ReentrantLock Condition
+1. ReentrantLock可以替代synchronized进行同步；
+2. ReentrantLock获取锁更安全；
+3. 必须先获取到锁，再进入try {...}代码块，最后使用finally保证释放锁；
+4. 可以使用tryLock()尝试获取锁。
+5. 引用的Condition对象必须从Lock实例的newCondition()返回，这样才能获得一个绑定了Lock实例的Condition实例。
+6. Condition提供的await()、signal()、signalAll()原理和synchronized锁对象的wait()、notify()、notifyAll()是一致的，并且其行为也是一样的：
+```java
+private final Lock lock = new ReentrantLock();
+private final Condition condition = lock.newCondition();
+
+lock.lock();//加锁
+try {
+    //临界区
+} finally {
+    lock.unlock();//释放锁
+}
+
+if (lock.tryLock(1, TimeUnit.SECONDS)) {//尝试加锁，1s后没成功则返回
+    try {
+        ...
+    } finally {
+        lock.unlock();
+    }
+}
+
+if (condition.await(1, TimeUnit.SECOND)) {//wait
+    // 被其他线程唤醒
+} else {
+    // 指定时间内没有被其他线程唤醒
+}
+```
+## ReadWriteLock读写锁
+1. 只允许一个线程写入（其他线程既不能写入也不能读取）；
+2. 没有写入时，多个线程允许同时读（提高性能）。
+3. 读的过程中不允许写
+```java
+private final ReadWriteLock rwlock = new ReentrantReadWriteLock();
+private final Lock rlock = rwlock.readLock();//获取读锁
+private final Lock wlock = rwlock.writeLock();//获取写锁
+
+wlock.lock(); // 加写锁
+try {
+    //临界区
+} finally {
+    wlock.unlock(); // 释放写锁
+}
+
+rlock.lock(); // 加读锁 允许分个线程同时读
+try {
+    //临界区
+} finally {
+    rlock.unlock(); // 释放读锁
+}
+```
+## StampedLock 
+StampedLock和ReadWriteLock相比，改进之处在于：读的过程中也允许获取写锁后写入！这样一来，我们读的数据就可能不一致，所以，需要一点额外的代码来判断读的过程中是否有写入，这种读锁是一种乐观锁。
+1. 写锁正常
+2. 先获取一个乐观读锁，读取后判断在读的过程中是否发生写，如若发生写则获取悲观读锁重新读
+3. writeLock();获取读锁
+4. tryOptimisticRead();获取乐观读锁，次锁在读的过程中可以写
+5. readLock();获取悲观读锁，读的过程中不允许写
+6. validate();检查乐观读锁后是否有其他写锁发生 
+7. unlockWrite();释放写锁
+8. unlockRead();释放悲观读锁 乐观读锁不需要释放
+```java
+private final StampedLock stampedLock = new StampedLock();
+long stamp = stampedLock.writeLock(); // 获取写锁
+try {
+    x += deltaX;
+    y += deltaY;
+} finally {
+    stampedLock.unlockWrite(stamp); // 释放写锁
+}
+
+long stamp = stampedLock.tryOptimisticRead(); // 获得一个乐观读锁
+double currentX = x;//读取
+double currentY = y;
+if (!stampedLock.validate(stamp)) { // 检查乐观读锁后是否有其他写锁发生
+    stamp = stampedLock.readLock(); // 获取一个悲观读锁
+    try {
+        currentX = x;
+        currentY = y;
+    } finally {
+        stampedLock.unlockRead(stamp); // 释放悲观读锁
+    }
+}
+```
+## Concurrent
+Java提供了许多封装好的线程安全的集合
+|interface|non-thread-safe|thread-safe|
+|---------|---------------|-----------|
+|List	|ArrayList	|CopyOnWriteArrayList|
+|Map	|HashMap	|ConcurrentHashMap|
+|Set	|HashSet/TreeSet	|CopyOnWriteArraySet|
+|Queue	|ArrayDeque/LinkedList	|ArrayBlockingQueue/LinkedBlockingQueue|
+|Deque	|ArrayDeque/LinkedList	|LinkedBlockingDeque|
+### 使用方式和非线程安全的集合一样
+```java
+Map<String, String> map = new HashMap();//非线程安全
+Map<String, String> map = new ConcurrentHashMap();//线程安全
+
+Map unsafeMap = new HashMap();
+Map threadSafeMap = Collections.synchronizedMap(unsafeMap);//将非线程安全的集合转成线程安全的集合，性能比ConcurrentHashMap低不推荐使用
+```
+## Atomic
+ava的java.util.concurrent包除了提供底层锁、并发集合外，还提供了一组原子操作的封装类，它们位于java.util.concurrent.atomic包。
+## 线程池
+线程池内部维护了若干个线程，没有任务的时候，这些线程都处于等待状态。如果有新任务，就分配一个空闲线程执行。如果所有线程都处于忙碌状态，新任务要么放入队列等待，要么增加一个新线程进行处理。避免了频繁创建和销毁线程
+1. JDK提供了ExecutorService接口实现了线程池功能：
+2. 线程池内部维护一组线程，可以高效执行大量小任务；
+3. Executors提供了静态方法创建不同类型的ExecutorService；
+4. 必须调用shutdown()关闭ExecutorService；
+5. ScheduledThreadPool可以定期调度多个任务。
+### 常用实现类
+1. FixedThreadPool：线程数固定的线程池；
+2. CachedThreadPool：线程数根据任务动态调整的线程池；
+3. SingleThreadExecutor：仅单线程执行的线程池。
+```java
+ExecutorService es = Executors.newFixedThreadPool(4);//创建4个固定数量的线程池
+es.submit(Runnable run);//放入任务
+es.shutdown();//关闭线程池 它会等待正在执行的任务先完成，然后再关闭
+es.shutdownNow();//立刻关闭线程池
+es.awaitTermination(1, TimeUnit.SECONDS);//等待1s后关闭线程池
+ExecutorService es = new ThreadPoolExecutor(0, 4,
+        60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());//创建一个在0到4个线程池之间动态调整的线程池
+```
+### ScheduledThreadPool 定期执行同一个任务
+```java
+ScheduledExecutorService ses = Executors.newScheduledThreadPool(4);
+ses.schedule(new Task("one-time"), 1, TimeUnit.SECONDS);//1s后执行一次任务
+ses.scheduleAtFixedRate(new Task("fixed-rate"), 2, 3, TimeUnit.SECONDS);//2s后开始执行，每3s执行一次//如果任务时间大于周期，则会执行玩任务后开始下一个
+ses.scheduleWithFixedDelay(new Task("fixed-delay"), 2, 3, TimeUnit.SECONDS);//2s后开始执行，任务执行的间隔为3s
+ses.shutdown();//关闭，不关闭的化，会一直运行，程序无法退出
+```
