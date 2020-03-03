@@ -23,7 +23,7 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        ses.shutdown();
+        ses.shutdown();
     }
 }
 

@@ -1,4 +1,5 @@
-# 包装类型 不变类
+# Java基础
+## 包装类型 不变类
 1. public final class Integer
 2. 比较需用.equre();不能用等于
 3. .toUnsignedInt();处理无符号整形
@@ -8,12 +9,17 @@ Integer n = Integer.valueOf(100);//初始化方法
 System.out.println(Integer.toHexString(255));//ff
 System.out.println(Integer.toBinaryString(255));//1111 1111
 ```
-# Random 伪随机数 需要指定随机种子（默认系统时间戳）
-# SecureRandom 真随机数（安全随机数）不需要指定随机种子
-# BigInteger 大整数
-# BigDecimal 精准浮点数
-# var 相当于C++ auto var b = new Person();
-# enumerate 枚举
+## Random
+伪随机数 需要指定随机种子（默认系统时间戳）
+## SecureRandom 
+真随机数（安全随机数）不需要指定随机种子
+## BigInteger
+大整数
+## BigDecimal
+精准浮点数
+## var
+相当于C++ auto var b = new Person();
+## enumerate 枚举
 ```java
 enum Weekday {
     SUN, MON, TUE,WED, THU, FRI,SAT;
@@ -37,10 +43,10 @@ enum Weekday {
     }
 }
 ```
-# 字符串相关
-## String 值不可更改
-## StringBuilder 可以添加(append)插入(insert)和删除(delete)
-## StringJoiner 以某字符串进行分割符号 内部实现 StringBuilder
+## 字符串相关
+1. String 值不可更改
+2. StringBuilder 可以添加(append)插入(insert)和删除(delete)
+3. StringJoiner 以某字符串进行分割符号 内部实现 StringBuilder
 ```java
 StringBuilder stringBuilder = new StringBuilder("Home ")
 // 分隔符 开头 结尾
@@ -51,7 +57,7 @@ for (var str : fields) {
 }
 joiner.toString();//="Home name, age, address!!!";
 ```
-# Inteface 接口
+## Inteface 接口
 ```java
 interface Interface {
     void cat();
@@ -62,7 +68,7 @@ interface Interface {
     }
 }
 ```
-# Java具有多态性，
+## Java具有多态性
 ```java
 Person p = new Student();//其中Student继承Person并重写了Person的print方法
 p.print();//执行的是Student的print方法 
@@ -96,22 +102,24 @@ p.print();//执行的是Student的print方法
          ┌─────────────────────┐ ┌─────────────────────────┐
          │NullPointerException │ │IllegalArgumentException │...
          └─────────────────────┘ └─────────────────────────┘
-## Error 严重错误
+## Error 
+`Error`严重错误
 1. OutOfMemoryError：内存耗尽
 2. NoClassDefFoundError：无法加载某个Class
 3. StackOverflowError：栈溢出
-## Exception 运行时错误，可以被捕获并处理。
+## Exception 
+`Exception` 分为`RuntimeException`和非`RuntimeException`
+`Exception`运行时错误，可以被捕获并处理。
 1. NumberFormatException：数值类型的格式错误
 2. FileNotFoundException：未找到文件
 3. SocketException：读取网络失败
 4. NullPointerException：对某个null的对象调用方法或字段
 5. IndexOutOfBoundsException：数组索引越界
-### Exception 分为RuntimeException和非RuntimeException
-***Java规定：***
+**Java规定：**
 必须捕获的异常，包括Exception及其子类，但不包括RuntimeException及其子类，这种类型的异常称为Checked Exception。不需要捕获的异常，包括Error及其子类，RuntimeException及其子类。
 ## 捕获异常
 定义函数可能会抛出UnsupportedEncodingException异常
-public void func() throws UnsupportedEncodingException{}
+> public void func() throws UnsupportedEncodingException{}
 ```java
 try{
     //
@@ -123,9 +131,11 @@ try{
     //不论程序如何运行都执行本语句
 }
 ```
+
 ## 自定义异常类型
 1. 一般创建一个BaseException继承自RuntimeException类
 2. 自定义的异常类继承自BaseException类
+
 # Assertion 断言
 是一种调试方法，只能用于程序开发阶段，启用断言需要命令行加参数-enableassertions(可简写为-ea)
 ```java
@@ -135,6 +145,7 @@ public static void main(String[] args) {
     System.out.println(x);
 }
 ```
+
 # Logger 日志类
 ## 日志级别
 1. SEVERE 严重
@@ -150,52 +161,67 @@ public static void main(String[] args) {
 Logger log = Logger.getGlobal();
 log.info("info");
 ```
-# Commons Logging是一个第三方日志库
-# Commons Logging加Log4j
-# SLF4J加Logback
+### Commons Logging
+是一个第三方日志库
+### Log4j
+Commons Logging加Log4j
+### SLF4J
+SLF4加Logback
+
 # 反射
 ## 获取一个class的Class实例
 1. Class cls = Student.class;
 2. Student stu = new Student();Class cls = stu.getClass();
 3. Class cls = Class.forName("java.lang.String");//通过完整类名获取
+
 ## 总结
+
 1. Java的反射API提供的Field类封装了字段的所有信息：
 2. 通过Class实例的方法可以获取Field实例：getField()***[public]***，getFields()，getDeclaredField()***[private]***，getDeclaredFields()；
 3. 通过Field实例可以获取字段信息：getName()，getType()，getModifiers()；
 4. 通过Field实例可以读取或设置某个对象的字段，如果存在访问限制，要首先调用setAccessible(true)来访问非public字段。
 5. 通过反射读写字段是一种非常规方法，它会破坏对象的封装。
-## Java的反射API提供的Method对象封装了方法的所有信息：
+
+## Method 
+Java的反射API提供的`Method`对象封装了方法的所有信息：
+
 1. 通过Class实例的方法可以获取Method实例：getMethod()，getMethods()，getDeclaredMethod()，getDeclaredMethods()；
 2. 通过Method实例可以获取方法信息：getName()，getReturnType()，getParameterTypes()，getModifiers()；
 3. 通过Method实例可以调用某个对象的方法：Object invoke(Object instance, Object... parameters)；
 4. 通过设置setAccessible(true)来访问非public方法；
-## Constructor对象封装了构造方法的所有信息；
+
+## Constructor
+Constructor对象封装了构造方法的所有信息
+
 1. 通过Class实例的方法可以获取Constructor实例：getConstructor()，getConstructors()，getDeclaredConstructor()，getDeclaredConstructors()；
 2. 通过Constructor实例可以创建一个实例对象：newInstance(Object... parameters); 通过设置setAccessible(true)来访问非public构造方法。
+
 ## 通过Class对象可以获取继承关系：
 1. Class getSuperclass()：获取父类类型；
 2. Class[] getInterfaces()：获取当前类实现的所有接口。
 3. 通过Class对象的isAssignableFrom()方法可以判断一个向上转型是否可以实现。
 4. 当我们判断一个实例是否是某个类型时，正常情况下，使用instanceof操作符：
+
 # 注解
-## 由编译器使用的注解 不会被编译到class文件
-1. @Override：让编译器检查该方法是否正确地实现了覆写。
-2. @SuppressWarnings：告诉编译器忽略此处代码产生的警告。
-## 由工具处理.class文件使用的注解
+1. 由编译器使用的注解 不会被编译到class文件
+	1. @Override：让编译器检查该方法是否正确地实现了覆写。
+	2. @SuppressWarnings：告诉编译器忽略此处代码产生的警告。
+2. 由工具处理.class文件使用的注解
 比如有些工具会在加载class的时候，对class做动态修改，实现一些特殊的功能。这类注解会被编译进入.class文件，但加载结束后并不会存在于内存中。这类注解只被一些底层库使用，一般我们不必自己处理。
-## 在程序运行期能够读取的注解
-## 使用@interface定义一个注解
-## 元注解 用于修饰注解
-使用@Target可以定义Annotation能够被应用于源码的哪些位置：
-1. 类或接口：ElementType.TYPE；
-2. 字段：ElementType.FIELD；
-3. 方法：ElementType.METHOD；
-4. 构造方法：ElementType.CONSTRUCTOR；
-5. 方法参数：ElementType.PARAMETER。
-另一个重要的元注解@Retention定义了Annotation的生命周期：
-1. 仅编译期：RetentionPolicy.SOURCE；
-2. 仅class文件：RetentionPolicy.CLASS；
-3. 运行期：RetentionPolicy.RUNTIME。
+3. 在程序运行期能够读取的注解
+4. 使用@interface定义一个注解
+## 元注解
+目的：用于修饰注解
+1. 使用@Target可以定义Annotation能够被应用于源码的哪些位置：
+    1. 类或接口：ElementType.TYPE；
+    2. 字段：ElementType.FIELD；
+    3. 方法：ElementType.METHOD；
+    4. 构造方法：ElementType.CONSTRUCTOR；
+    5. 方法参数：ElementType.PARAMETER。
+2. 另一个重要的元注解@Retention定义了Annotation的生命周期：
+    1. 仅编译期：RetentionPolicy.SOURCE；
+    2. 仅class文件：RetentionPolicy.CLASS；
+    3. 运行期：RetentionPolicy.RUNTIME。
 ```java
 // @Target({
 //     ElementType.METHOD,
@@ -209,8 +235,10 @@ public @interface Report {
     String value() default "";//最常用的参数应该指定为value
 }
 ```
+
 # 泛型 
 泛型是一种代码模板
+
 ```java
 class Pair<T> {
     private T first;
@@ -222,6 +250,7 @@ class Pair<T> {
     //...
 }
 ```
+
 ## 注意事项
 1. T实际上是Object类所以不能为int等基本数据类型
 2. new T(); 这种写法是错误的
@@ -238,11 +267,18 @@ public static <T> void copy(List<? super T> dest, List<? extends T> src) {
     }
 }
 ```
-## PECS(Prudecer extents Consumer super)原则
+## PECS原则
+
+(Prudecer extents Consumer super)
+
 1. 生产者用extents 只读不写
 2. 消费者用super 只写不读
-## 无限定通配符<?>很少使用，可以用<T>替换，同时它是所有<T>类型的超类。
+## 无限定通配符<?>
+
+很少使用，可以用<T>替换，同时它是所有<T>类型的超类。
+
 不可读也不可写，常用于一些判断，可以使用<T>替换
+
 # 集合
 1. add 添加元素
 2. contains 判断是否有该元素
@@ -254,40 +290,42 @@ public static <T> void copy(List<? super T> dest, List<? extends T> src) {
 9. offer 提供
 10. element 元素
 11. isEmpty 是否为空
-键值需要重写equals与hashCode方法 需要排序是需要继承Comparable接口或指定Comparable
+判断键值需要重写equals与hashCode方法 排序是需要继承Comparable接口或指定Comparable
 Objects.hash(Object... values);
 Objects.equals(this.text, msg.text) && this.sequence == msg.sequence&&
-# Map
-## HashMap 无序
+## Map
+### HashMap 无序
 ```java 
 Map<String, Integer> map = new HashMap<>();
 ```
-## TreeMap 关键字有序
+### TreeMap 关键字有序
 ```java
 Map<String, Integer> map = new TreeMap<>();
 ```
-# Set
-## HashMap 无序
+## Set
+### HashMap 无序
 ```java 
 Set<String> set = new HashSet<>();
 ```
-## TreeMap 关键字有序
+### TreeMap 关键字有序
 ```java
 Set<String> set = new TreeSet<>();
 ```
-# Queue
-## Queue<String> stringQueue = new LinkedList<>();
+## Queue
+> Queue<String> stringQueue = new LinkedList<>();
 1. 通过add()/offer()方法将元素添加到队尾；
 2. 通过remove()/poll()从队首获取元素并删除；
 3. 通过element()/peek()从队首获取元素但不删除。
 4. ***注意：add,remove,element失败时会抛出异常，offer,poll,peek失败是会返回flase或null***
 ***要避免把null添加到队列。***
-# PriorityQueue 有限队列，优先级高的先出队列
-## PriorityQueue<User> userQueue = new PriorityQueue<>(new UserComparator());
+## PriorityQueue
+有限队列，优先级高的先出队列
+> PriorityQueue<User> userQueue = new PriorityQueue<>(new UserComparator());
 1. 实现PriorityQueue的关键在于提供的UserComparator对象，它负责比较两个元素的大小***较小的在前***
 2. PriorityQueue实现了一个优先队列：从队首获取元素时，总是获取优先级最高的元素。
 3. PriorityQueue默认按元素比较的顺序排序（必须实现Comparable接口），也可以通过Comparator自定义排序算法（元素就不必实现Comparable接口）。
-# Deque 双端队列
+
+## Deque 双端队列
 |                 |Queue|Deque|
 |-----------------|---------------------|---------------------|
 |添加元素到队尾    |add(E e) / offer(E e)|	addLast(E e) / offerLast(E e)|
@@ -296,18 +334,21 @@ Set<String> set = new TreeSet<>();
 |添加元素到队首    |无                   |	addFirst(E e) / offerFirst(E e)|
 |取队尾元素并删除  |无                   |	E removeLast() / E pollLast()|
 |取队尾元素但不删除|无                   |	E getLast() / E peekLast()|
-# Stack 栈 ，使用Deque来实现，不可以用Stack
+
+## Stack 栈 ，使用Deque来实现，不可以用Stack
 1. Deque<String> stringDeque = new LinkedList<>();
 2. stringDeque.pop();//出栈 返回栈顶元素
 3. stringDeque.push();//入栈
 4. stringDeque.peek();//查看栈顶元素
-# Collections
+
+## Collections
 * Collections.emptyList()/Collections.emptySet()/Collections.emptyMap() 创建final（不可变）空列表/集合/map
 * Collections.singletonList("AAA")， 创建单元素
 * List.of("AAA") 创建的集合都是不可变集合
 * Collections.sort(list);//对可可变集合进行排序
 * Collections.shuffle(list);//洗牌
 * Collections.unmodifiableList(); 返回 封装成不可变集合
+
 # 日期时间
 ## 本地日期和时间：
 1. LocalDateTime(日期与时间)
@@ -329,7 +370,9 @@ LocalTime time = dt.toLoaclTime();//转成时间
 LocalDate date = LocalDate.of(2020.2.2);//指定日期
 LocalDateTime dt = LocalDateTime.parse("2019-11-19T15:16:17");//按照ISO 8601格式设置时间
 ```
-## DateTimeFormatter 自定义日期输出格式
+## DateTimeFormatter
+自定义日期输出格式
+
 ```java
 // 自定义格式化:
 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -338,7 +381,8 @@ System.out.println(dtf.format(LocalDateTime.now()));
 LocalDateTime dt2 = LocalDateTime.parse("2019/11/30 15:16:17", dtf);
 System.out.println(dt2);
 ```
-## 带时区的日期和时间：ZonedDateTime；
+## ZonedDateTime
+带时区的日期和时间
 1. ZonedDateTime.now();
 2. ZonedDateTime.now(ZoneID.of("America/New_York"));
 3. LocalDateTime.now().atZone(ZoneId.of("Asia/Shanghai"));
@@ -352,7 +396,9 @@ ZonedDateTime zTime = ZonedDateTime.now(ZoneId.of("Asia/Shanghai"));//获取时�
 ZonedDateTime nTime = zTime.withZoneSameInstant(ZoneId.of("America/New_York"));//转换时区
 LocalDateTime lTime = zTime.toLocalDateTime();转换成本地时间
 ```
-## 时刻：Instant 表示高精度时间戳
+
+## Instant
+表示高精度时间戳
 1. getEpochSecond();//输出毫秒
 2. toEpochMilli();//纳秒
 3. atZone(ZoneId.systemDefault());//转换成ZonedDateTime
@@ -459,6 +505,7 @@ if (matcher.matches()) {
 }
 ```
 ***例如 \d* 匹配 ***
+
 ## 示例
 ```java
 /**
@@ -590,9 +637,9 @@ System.out.println(new BigInteger(1, result).toString(16));
 //校验
 SecretKey key = new SecretKey(byte[] sKey, "HmacMD5");//通过sKey获取key
 ```
-### 对称加密算法
+## 对称加密算法
 对称加密算法就是传统的用一个密码进行加密和解密
-#### 使用AES加密
+### 使用AES加密
 1. 根据算法名称/工作模式/填充模式获取Cipher实例；
 2. 根据算法名称初始化一个SecretKey实例，密钥必须是指定长度；
 3. 使用SerectKey初始化Cipher实例，并设置加密或解密模式；
@@ -619,7 +666,7 @@ private static byte[] encrypt(byte[] key, byte[] bytes) throws Exception {
 3. 公钥是公开的，私钥是保密的
 4. 通过KeyPairGenerator生成KeyPair 
 5. KeyPair包含PublicKey与PrivateKey
-### 非对称加密 RSA
+## 非对称加密 RSA
 非对称加密相比对称加密的显著优点在于，对称加密需要协商密钥，而非对称加密可以安全地公开各自的公钥，在N个人之间通信的时候：使用非对称加密只需要N个密钥对，每个人只管理自己的密钥对。而使用对称加密需要则需要N*(N-1)/2个密钥，因此每个人需要管理N-1个密钥，密钥管理难度大，而且非常容易泄漏。
 非对称加密的缺点就是运算速度非常慢，比对称加密要慢很多。
 一般使用非对称加密传递密钥，使用对称加密传递文件
@@ -636,16 +683,16 @@ PKCS8EncodeKeySepc skSepc = new PKCS8EncodeKeySepc("RSA");
 PrivateKey sk = kf.generatorPrivate(skSepc);
 ```
 **注意：只是用非对称加密无法防止中间人攻击，因为你不确定对方是不是本人**
-### 签名算法
+## 签名算法
 1. 如果使用私钥加密，那么就可以使用公钥解密，由于所有人都有对方的公钥，所以消息所有人都可以查看，并且知道是谁发的
 2. 此方法用于验证对方身份时使用的
 3. 在实际应用中，签名不是对原始消息进行签名而是哈希值进行签名
-#### 应用
+### 应用
 1. 防止伪造
 2. 防止抵赖
 3. 检测篡改
-#### RSA 签名算法
-#### DSA 签名算法
+### RSA 签名算法
+### DSA 签名算法
 #### ECDSA签名 椭圆曲线签名算法
 特点：可以从私钥推出公钥。BouncyCastle提供了ECDSA的完整实现
 #### 数字证书
@@ -664,6 +711,7 @@ new Thread(() -> {
 2. Thread.sleep(10);暂停线程10毫秒，转由其他线程运行 需要检测异常
 3. 创建线程是由start()方法完成的 start方法内部有一个private native void start0(); native代表该方法是由JVM内部的C代码实现的
 4. Thread.setPriority(int n); [1,10] 默认5，设置线程优先级 数字越大优先级越高
+5. Thread.currentThread(); 获取当前线程
 ## Java中线程状态
 1. New：新创建的线程，尚未执行；
 2. Runnable：运行中的线程，正在执行run()方法的Java代码；
@@ -836,7 +884,9 @@ es.awaitTermination(1, TimeUnit.SECONDS);//等待1s后关闭线程池
 ExecutorService es = new ThreadPoolExecutor(0, 4,
         60L, TimeUnit.SECONDS, new SynchronousQueue<Runnable>());//创建一个在0到4个线程池之间动态调整的线程池
 ```
-### ScheduledThreadPool 定期执行同一个任务
+
+### ScheduledThreadPool 
+> 定期执行同一个任务
 ```java
 ScheduledExecutorService ses = Executors.newScheduledThreadPool(4);
 ses.schedule(new Task("one-time"), 1, TimeUnit.SECONDS);//1s后执行一次任务
@@ -844,3 +894,88 @@ ses.scheduleAtFixedRate(new Task("fixed-rate"), 2, 3, TimeUnit.SECONDS);//2s后�
 ses.scheduleWithFixedDelay(new Task("fixed-delay"), 2, 3, TimeUnit.SECONDS);//2s后开始执行，任务执行的间隔为3s
 ses.shutdown();//关闭，不关闭的化，会一直运行，程序无法退出
 ```
+### ThreadLocal
+`ThreadLocal`表示线程的“局部变量”，它确保每个线程的`ThreadLocal`变量都是各自独立的；
+`ThreadLocal`适合在一个线程的处理流程中保持上下文（避免了同一参数在所有方法中传递）；
+使用`ThreadLocal`要用`try ... finally`结构，并在`finally`中清除。
+
+# Maven
+- `Maven`是一个Java项目的管理和构建工具：
+
+- Maven使用`pom.xml`定义项目内容，并使用预设的目录结构；
+
+- 在Maven中声明一个依赖项可以自动下载并导入classpath；
+
+- Maven使用`groupId`，`artifactId`和`version`唯一定位一个依赖。
+
+- 如果生命的依赖项有需要其他包则会一并下载导入
+
+## 依赖关系
+| scope    | 说明                                          | 示例            |
+| :------- | :-------------------------------------------- | :-------------- |
+| compile  | 编译时需要用到该jar包（默认）                 | commons-logging |
+| test     | 编译Test时需要用到该jar包                     | junit           |
+| runtime  | 编译时不需要，但运行时需要用到                | mysql           |
+| provided | 编译时需要用到，但运行时由JDK或某个服务器提供 | servlet-api     |
+
+```xml
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.3.2</version>
+    <!--scope声明依赖关系 不写为默认compile-->
+    <scope>test</scope>
+</dependency>
+```
+
+Maven如何知道从何处下载所需的依赖？也就是相关的jar包？答案是Maven维护了一个中央仓库<https://repo1.maven.org/>，所有第三方库将自身的jar以及相关信息上传至中央仓库，Maven就可以从中央仓库把所需依赖下载到本地。
+
+Maven并不会每次都从中央仓库下载jar包。一个jar包一旦被下载过，就会被Maven自动缓存在本地目录（用户主目录的`.m2`目录），所以，除了第一次编译时因为下载需要时间会比较慢，后续过程因为有本地缓存，并不会重复下载相同的jar包。
+
+**注：**任何Java包已经发布就无法修改其ID（`groupId`，`artifactId`，`version`），只有以`SNAPSHOT-`开头的版本号会被Maven视为开发版本，开发版本每次都会重复下载，这种SNAPSHOT版本只能用于内部私有的Maven repo，公开发布的版本不允许出现SNAPSHOT。
+
+## Maven镜像
+通过Maven下载会非常缓慢，我们可以选择一个速度较快的Maven镜像仓库（定期从中央仓库同步）。
+
+中国区用户可以使用阿里云提供的Maven镜像仓库。使用Maven镜像仓库需要一个配置，在用户主目录下进入`.m2`目录，创建一个`settings.xml`配置文件，内容如下：
+
+```xml
+<settings>
+    <mirrors>
+        <mirror>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <mirrorOf>central</mirrorOf>
+            <!-- 国内推荐阿里云的Maven镜像 -->
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </mirror>
+    </mirrors>
+</settings>
+```
+
+## 搜索第三方组件
+
+通过[search.maven.org](https://search.maven.org/)搜索关键字，找到对应的组件后，直接复制
+
+![maven](H:\Desktop\C-Java-Python\Java\maven.png)
+
+## 构建流程
+
+在实际开发过程中，经常使用的命令有：
+
+- `mvn clean`：清理所有生成的class和jar；
+- `mvn clean compile`：先清理，再执行到`compile`；
+- `mvn clean test`：先清理，再执行到`test`，因为执行`test`前必须执行`compile`，所以这里不必指定`compile`；
+- `mvn clean package`：先清理，再执行到`package`。
+
+经常用到的phase其实只有几个：
+
+- clean：清理
+- compile：编译
+- test：运行测试
+- package：打包
+
+### lifecycle phase goal
+1. lifecycle相当于Java的package，它包含一个或多个phase；
+2. phase相当于Java的class，它包含一个或多个goal；
+3. goal相当于class的method，它其实才是真正干活的。
