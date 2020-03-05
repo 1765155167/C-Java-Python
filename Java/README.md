@@ -979,3 +979,15 @@ Maven并不会每次都从中央仓库下载jar包。一个jar包一旦被下载
 1. lifecycle相当于Java的package，它包含一个或多个phase；
 2. phase相当于Java的class，它包含一个或多个goal；
 3. goal相当于class的method，它其实才是真正干活的。
+
+### 注意不再支持源选项 5。请使用 7 或更高版本
+- 在pom.xml中添加
+```xml
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+```

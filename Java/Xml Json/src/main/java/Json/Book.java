@@ -1,9 +1,9 @@
-package XML;
+package Json;
 
-import Json.IsbnDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Book {
@@ -14,7 +14,8 @@ public class Book {
     @JsonDeserialize(using = IsbnDeserializer.class)
     public BigInteger isbn;
     public List<String> tags;
-    public String pubDate;
+    //    public String pubDate;
+    public LocalDate pubDate;
 
     @Override
     public String toString() {
