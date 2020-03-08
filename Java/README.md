@@ -1,8 +1,23 @@
 # Java基础
+
+## Java权限
+| 权限      | 类本身 | 同包类 | 外包子类 | 外包类 |
+| :-------- | :----: | :----: | :------: | :----: |
+| public    |   √    |   √    |    √     |   √    |
+| protected |   √    |   √    |    √     |   ×    |
+| default   |   √    |   √    |    ×     |   ×    |
+| private   |   √    |   ×    |    ×     |   ×    |
+
+## final修饰符
+1. 修饰class类 类不可以被继承
+2. 修饰方法 方法不可以被复写
+3. 修饰field必须在创建时或者构造函数进行初始化，初始化后不可更改
+
 ## 包装类型 不变类
 1. public final class Integer
 2. 比较需用.equre();不能用等于
 3. .toUnsignedInt();处理无符号整形
+
 ## Integer
 ```java
 Integer n = Integer.valueOf(100);//初始化方法
@@ -49,8 +64,9 @@ enum Weekday {
 3. StringJoiner 以某字符串进行分割符号 内部实现 StringBuilder
 ```java
 StringBuilder stringBuilder = new StringBuilder("Home ")
-// 分隔符 开头 结尾
+
 String[] fields = {"name","age","address"}
+// 分隔符 开头 结尾
 StringJoiner joiner = new StringJoiner(", ", stringBuilder.toString(), "!!!");
 for (var str : fields) {
     joiner.add(str);
@@ -474,8 +490,8 @@ public void testLargeInput() {
 7. \S 匹配\s不能匹配的字符
 9. \u548c 指定Unicode字符[和：548c]
 ## 数量匹配
-1. * [0,) 0个至多个
-2. + [1,) 
+1. \* [0,) 0个至多个
+2. \+ [1,) 
 3. ? [0,1]
 4. {n} [n]
 5. {n,m} [n,m]
@@ -991,3 +1007,4 @@ Maven并不会每次都从中央仓库下载jar包。一个jar包一旦被下载
     <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
 ```
+
