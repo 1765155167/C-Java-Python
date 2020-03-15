@@ -17,7 +17,7 @@ class C {
 void test01()
 {
 	char ch = 'a';
-	int num = static_cast<char>(ch);
+	int num = static_cast<int>(ch);
 	std::cout << "num: " << num << std::endl;
 
 	//指针
@@ -57,7 +57,7 @@ void test02()
 //去除const性
 void test03()
 {
-	int data = 10;
+	const int data = 10;
 	const int& a  = data;
 	int& b = const_cast<int&>(a);
 	b = 20;

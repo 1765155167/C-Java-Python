@@ -37,7 +37,11 @@ void test02()
 
 int main()
 {
-	test01();
+	MyString num = "Hello";
+	MyString str;
+	str = num + "hello";
+	std::cout << str << std::endl;
+	std::cout << num << std::endl;
 	return 0;
 }
 

@@ -12,6 +12,9 @@ public:
 	virtual void fun() {
 		std::cout << "Parent::fun()" << std::endl;
 	}
+	virtual ~Parent() {
+
+	}
 private:
 	int a;
 };
@@ -25,6 +28,9 @@ public:
 	virtual void fun() {
 		std::cout << "Parent2::fun()" << std::endl;
 	}
+	virtual ~Parent2() {
+
+	}
 private:
 	int a;
 };
@@ -37,13 +43,16 @@ public:
 	/*void fun() {
 		std::cout << "Child::fun()" << std::endl;
 	}*/
+	virtual ~Child() {
+
+	}
 private:
 	//int b;
 };
 
 int main()
 {
-	Parent* p = new Child();
+	Parent2* p = new Child();
 	p->fun();
 	std::cout << "sizeof(Parent)=" << sizeof(Parent) << std::endl;
 	std::cout << "sizeof(Child)=" << sizeof(Child) << std::endl;

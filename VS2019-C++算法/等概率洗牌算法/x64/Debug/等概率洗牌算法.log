@@ -1,4 +1,4 @@
 ﻿  等概率洗牌算法.cpp
-H:\Desktop\C-Java-Python\VS2019-C++算法\等概率洗牌算法\等概率洗牌算法.cpp(10,26): warning C4244: “=”: 从“ULONGLONG”转换到“DWORD”，可能丢失数据
-H:\Desktop\C-Java-Python\VS2019-C++算法\等概率洗牌算法\等概率洗牌算法.cpp(9,17): warning C4101: “t_end”: 未引用的局部变量
+H:\Desktop\C-Java-Python\VS2019-C++算法\等概率洗牌算法\等概率洗牌算法.cpp(11,26): warning C4244: “=”: 从“ULONGLONG”转换到“DWORD”，可能丢失数据
+H:\Desktop\C-Java-Python\VS2019-C++算法\等概率洗牌算法\等概率洗牌算法.cpp(10,17): warning C4101: “t_end”: 未引用的局部变量
   等概率洗牌算法.vcxproj -> H:\Desktop\C-Java-Python\VS2019-C++算法\x64\Debug\等概率洗牌算法.exe

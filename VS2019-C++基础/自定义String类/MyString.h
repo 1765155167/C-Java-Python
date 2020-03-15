@@ -11,6 +11,7 @@ public:
 	/*÷ÿ‘ÿ =°¢+°¢==°¢!=°¢[]°¢<<°¢>> ‘ÀÀ„∑˚ */
 	MyString& operator=(const MyString& another);
 	MyString operator+(const MyString& another);
+	MyString operator-(const MyString& another);
 	bool operator==(const MyString& another);
 	bool operator!=(const MyString& another);
 	char& operator[](size_t num)const;

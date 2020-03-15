@@ -15,6 +15,7 @@
         <module>IOCControl</module>
         <module>Web</module>
         <module>Factory</module>
+        <module>Factory_Spring</module>
     </modules>
 
     <properties>

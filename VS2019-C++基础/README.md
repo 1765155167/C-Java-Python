@@ -46,14 +46,14 @@
 - lower_bound()大于等于
 - upper_bound()大于
 - equal_range()返回pair<lower_bound(),upper_bound()> 
-```
+```c++
 //仿函数
 class mycompare {
 public:
 	bool operator()(const int a,const int b) const
 	{
 		return a > b;
-	}
+	}c++
 };
 std::set<int, mycompare> s;//利用仿函数更改为降序排序
 std::set<Person, mycompare> s;//放入类对象时需要利用仿函数声明排序规则

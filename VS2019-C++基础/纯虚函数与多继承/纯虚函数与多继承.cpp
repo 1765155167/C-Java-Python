@@ -35,8 +35,8 @@ public:
 
 int main()
 {
-	InerFaceOne* ione = new MyClass;
-	InerFaceTwo* itwo = new MyClass;
+	InerFaceOne* ione = new MyClass();
+	InerFaceTwo* itwo = new MyClass();
 	ione->funOne();
 	itwo->funTwo();
 	delete ione;

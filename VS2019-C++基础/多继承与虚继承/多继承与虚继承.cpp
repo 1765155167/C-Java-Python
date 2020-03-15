@@ -49,6 +49,7 @@ int main()
 {
 	SofaBad sb;
 	sb.SofaBad_sleep();
+	sb.Sofa::sleep();
 	std::cout << "Furniture大小：" << sizeof(Furniture) << std::endl;
 	std::cout << "Sofa大小：" << sizeof(Sofa) << std::endl;
 	std::cout << "Bad大小：" << sizeof(Bad) << std::endl;

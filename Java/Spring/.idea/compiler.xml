@@ -10,6 +10,7 @@
         <module name="BeanDemo" />
         <module name="Factory" />
         <module name="SpringDemo" />
+        <module name="Factory_Spring" />
         <module name="IOCControl" />
         <module name="injectBean" />
       </profile>

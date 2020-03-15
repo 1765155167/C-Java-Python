@@ -57,7 +57,7 @@ void test01()
 	sort(v1.begin(), v1.end(), MyCompare());
 	sort(v2.begin(), v2.end(), MyCompare());
 	std::vector<int> v3;
-	v3.resize(v1.size() + v2.size());
+	v3.resize(v1.size() + v2.size());//设置v3容量
 	//std::merge()默认合并升序序列
 	//std::merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin());
 	std::merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin(), MyCompare());
@@ -211,7 +211,7 @@ void test07()
 int main()
 {
 	srand(static_cast<int>(time(NULL)));
-	test07();
+	test01();
 	return 0;
 }
 

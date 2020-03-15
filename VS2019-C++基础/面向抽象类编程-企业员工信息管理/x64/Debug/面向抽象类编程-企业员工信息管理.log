@@ -1,2 +1,9 @@
-﻿  main.cpp
-  面向抽象类编程-企业员工信息管理.vcxproj -> C:\Users\17651\Desktop\C-Java-Python\VS2019-C++基础\x64\Debug\面向抽象类编程-企业员工信息管理.exe
+﻿  Employee.cpp
+  main.cpp
+  Manager.cpp
+  SalesManager.cpp
+  Salesperson.cpp
+  Technical.cpp
+H:\Desktop\C-Java-Python\VS2019-C++基础\面向抽象类编程-企业员工信息管理\Technical.cpp(11,33): warning C4244: “=”: 从“size_t”转换到“double”，可能丢失数据
+  正在生成代码...
+  面向抽象类编程-企业员工信息管理.vcxproj -> H:\Desktop\C-Java-Python\VS2019-C++基础\x64\Debug\面向抽象类编程-企业员工信息管理.exe

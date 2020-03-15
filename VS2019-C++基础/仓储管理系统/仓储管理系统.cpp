@@ -62,7 +62,7 @@ void Purchase(Goods* &head, int w, int v)
 	}
 	else
 	{
-		temp->next = head;
+		temp->next = head;//头插法
 		head = temp;
 	}
 	return;
@@ -82,7 +82,7 @@ void Shipment(Goods* &head)
 
 void save(Goods* head)
 {
-	const char* filePath = "C:\\Users\\17651\\Desktop\\C++提高代码\\Goods";
+	const char* filePath = ".\\Goods";
 	std::ofstream osm(filePath,
 		std::ios::out | std::ios::binary | std::ios::trunc);
 	if (!osm) {
@@ -99,7 +99,7 @@ void save(Goods* head)
 Goods* load()
 {
 	Goods* head = NULL;
-	const char* filePath = "C:\\Users\\17651\\Desktop\\C++提高代码\\Goods";
+	const char* filePath = ".\\Goods";
 	std::ifstream ism(filePath, std::ios::in | std::ios::binary);
 	if (!ism) {
 		std::cout << "文件" << filePath << "打开失败" << std::endl;

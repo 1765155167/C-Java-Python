@@ -17,7 +17,7 @@ public class AccountServiceImpl implements IAccountService {
         accountDao = (IAccountDao)
                 BeanFactory.getBean("accountDao");
         Logger log = LoggerFactory.getLogger(AccountServiceImpl.class);
-        log.info("accountDao = " + accountDao);
+        log.info("accountDao = {}",accountDao);
     }
 
     @Override

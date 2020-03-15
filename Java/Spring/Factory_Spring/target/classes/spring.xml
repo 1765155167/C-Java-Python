@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--创建一个xml配置文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <!--将一个Bean交由Spring创建并管理-->
+    <bean id="accountService" class="hqf.service.impl.AccountServiceImpl"></bean>
+    <bean id="accountDao" class="hqf.dao.impl.AccountDaoImpl"></bean>
+</beans>

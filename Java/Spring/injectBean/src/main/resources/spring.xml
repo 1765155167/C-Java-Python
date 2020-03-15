@@ -6,11 +6,25 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <!--Spring对Bean的管理细节
+        1.创建bean的三种方式
+            1.使用默认构造函数创建
+            <bean class="com.hqf.class004.AnotherBean" id="anotherBean">
+            2.使用某个类中的方法创建对象 ，并存入spring容器
+            <bean class="com.hqf.class004.BeanFactory" id="beanFactory"/>
+            <bean class="com.hqf.class004.AnotherBean" id="bean2"
+             factory-bean="beanFactory" factory-method="getBean" />
+            3.使用某个类中静态方法创建对象，并存入spring容器中
+            <bean class="com.hqf.class004.BeanFactory" factory-method="getStaticBean"/>
+        2.bean对象的作用范围
+        3.bean对象的声明周期
+    -->
     <!--将一个Bean交由Spring创建并管理-->
+
     <bean class="com.hqf.class004.AnotherBean" id="anotherBean"
-    scope="prototype"
-    lazy-init="default"
-    init-method="print"/> <!--实例构造后调用print方法-->
+          scope="prototype"
+          lazy-init="default"
+          init-method="print"/> <!--实例构造后调用print方法-->
     <!--prototype 每次通过上下文请求一个bean时都会new一个-->
     <!--singleton单例模式，同一个上下文通过bean id创建时只有一个，不同上下文创建的不同-->
     <bean class="com.hqf.class004.Bean" id="bean">
@@ -23,7 +37,7 @@
                          value="Hello"/>
         <property name="anotherBean1">
             <!--注入bean 不通过id注入-->
-            <bean class="com.hqf.class004.AnotherBean" />
+            <bean class="com.hqf.class004.AnotherBean"/>
         </property>
         <property name="string1" value="World"/>
         <property name="stringList">

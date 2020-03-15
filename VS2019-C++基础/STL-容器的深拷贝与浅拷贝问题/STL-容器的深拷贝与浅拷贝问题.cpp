@@ -7,27 +7,22 @@
 class Person {
 public:
 	Person() {
-		this->name = NULL;
+		this->name = new char[1];
 		this->age = 0;
+		init();
 	}
 	Person(const char* name, int age) {
 		this->name = new char[strlen(name) + 1];
 		strcpy_s(this->name, strlen(name) + 1, name);
 		this->age = age;
+		init("const char* name, int age");
 	}
 	Person(const Person& another)
 	{
-		if (&another == this)
-		{
-			this->name = NULL;
-			this->age = 0;
-		}
-		else
-		{
-			this->name = new char[strlen(another.name) + 1];
-			strcpy_s(this->name, strlen(another.name) + 1, another.name);
-			this->age = another.age;
-		}
+		this->name = new char[strlen(another.name) + 1];
+		strcpy_s(this->name, strlen(another.name) + 1, another.name);
+		this->age = another.age;
+		init("const Person&");
 	}
 	Person& operator=(const Person& another)
 	{
@@ -40,6 +35,9 @@ public:
 		strcpy_s(this->name, strlen(another.name) + 1, another.name);
 		this->age = another.age;
 	}
+	void setAge(int age) {
+		this->age = age;
+	}
 	void toString()
 	{
 		std::cout << "姓名:" << this->name
@@ -51,25 +49,57 @@ public:
 			delete this->name;
 			this->name = NULL;
 		}
-		std::cout << "~Person()..." << std::endl;
+		del();
 	}
 protected:
 	char* name;
 	int age;
+private:
+	void init(std::string arg) {
+		std::cout << "init()..." << arg << std::endl;
+	}
+	void init() {
+		std::cout << "init()..."<< std::endl;
+	}
+	void del() {
+		std::cout << "del()..." << std::endl;
+	}
 };
 void test01()
 {
-	Person p1("hqf", 21);
-	std::vector<Person> vp;
+	Person *p1 = new Person("hqf", 21);
+	std::vector<Person*> vp;
 	vp.push_back(p1);//插入元素到容器中时将元素[拷贝]一份到容器中
 	for (auto it = vp.begin(); it != vp.end(); it++)
 	{
-		(*it).toString();
+		(*it)->toString();
+	}
+	vp.clear();
+}
+
+void test03() {
+	std::vector<Person> a;
+	Person p("hqf", 20);
+	std::cout << "-------------------" << std::endl;
+	a.push_back(p);
+	std::cout << "-------------------" << std::endl;
+	for(auto it = a.begin(); it != a.end(); it++)
+	{
+		auto num = *it;
+		std::cout << "-------------------" << std::endl;
+		num.setAge(21);
+		num.toString();
+	}
+	for (auto num : a)
+	{
+		std::cout << "-------------------" << std::endl;
+		num.toString();
 	}
 }
+
 int main()
 {
-	test01();
+	test03();
 	return 0;
 }
 

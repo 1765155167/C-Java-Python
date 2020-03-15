@@ -73,6 +73,10 @@ MyString MyString::operator+(const MyString& another)
 	temp.len = len;
 	return temp;
 }
+MyString MyString::operator-(const MyString& another)
+{
+	return MyString();
+}
 #endif // 0
 
 bool MyString::operator==(const MyString& another)

@@ -17,12 +17,12 @@ public:
 	
 	friend void abc6() {}
 private:
-	char a;
-	int num1;
 	char a1;
+	int num1;
 	int num2;
-	float f1;
-	double f;
+	float num3;//16 4 
+	char a;
+	double num4;//
 };
 
 A::A()
@@ -39,8 +39,8 @@ int main()
 {
 	A a;
 	struct B b;
-    std::cout << sizeof(a) << std::endl;
-	std::cout << sizeof(b) << std::endl;
+    std::cout << sizeof(a) << std::endl;//64
+	std::cout << sizeof(b) << std::endl;//8
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

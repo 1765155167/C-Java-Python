@@ -1,3 +1,3 @@
 ﻿  常用的查找算法.cpp
-C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\常用的查找算法\常用的查找算法.cpp(127,10): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
-  常用的查找算法.vcxproj -> C:\Users\17651\Desktop\C++提高代码\C-Java-Python\VS2019\x64\Debug\常用的查找算法.exe
+H:\Desktop\C-Java-Python\VS2019-C++基础\常用的查找算法\常用的查找算法.cpp(127,10): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+  常用的查找算法.vcxproj -> H:\Desktop\C-Java-Python\VS2019-C++基础\x64\Debug\常用的查找算法.exe

@@ -100,7 +100,7 @@ bool Compare(int val)
 }
 void test04()
 {
-	int data[] = { 1,2,3,5,5,8,8,4,6,4,5,9 };
+	int data[] = { 1,2,3,8,8,5,5,4,6,4,5,9 };
 	std::vector<int> v(data, data + sizeof(data) / sizeof(data[0]));
 	for_each(v.begin(), v.end(), Print);
 	std::cout << std::endl;

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <ctime>
+
 //等概率随机洗牌算法
 void Shuffle(int data[], int len) {
 	DWORD t_start, t_end;

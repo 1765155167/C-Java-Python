@@ -68,12 +68,9 @@ void what_doing(Person& person)
 }
 int main()
 {
-	Person* z3 = new Person("张三");
-	Student* l4 = new Student("李四");
-	Techer* w5 = new Techer("王五");
-	what_doing(z3);
-	what_doing(l4);
-	what_doing(w5);
+	what_doing(new Person("张三"));
+	what_doing(new Student("李四"));
+	what_doing(new Techer("王五"));
 	return 0;
 }
 

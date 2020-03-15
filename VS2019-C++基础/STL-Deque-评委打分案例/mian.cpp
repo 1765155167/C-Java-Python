@@ -64,6 +64,13 @@ void setScore(std::vector<Player>& v)
 
 
 //排名打印
+class Comrelue {
+public:
+	bool operator()(Player& a, Player& b) const {
+		return a.getScore() > b.getScore();
+	}
+};
+
 bool comrelue(Player& a, Player& b)
 {
 	if (a.getScore() > b.getScore())
@@ -84,7 +91,7 @@ void printInfo(Player& p)
 void printPlayer(std::vector<Player>& v)
 {
 	//排名从大到小
-	sort(v.begin(), v.end(), comrelue);
+	sort(v.begin(), v.end(), Comrelue());
 	std::for_each(v.begin(), v.end(), printInfo);
 }
 

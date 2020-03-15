@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <numeric>
 #include <time.h>
+#include "main.h"
 
 //创建24名选手 编号从1001 - 10024
 void CreatePlayer(std::map<int, Player*>& mPlist, std::vector<int>& v)
@@ -56,7 +57,7 @@ std::vector<int> Game(std::map<int, Player*>& mPlist, std::vector<int>& v, int a
 	for (auto it = v.begin(); it != v.end(); it++)
 	{
 		Player* p = mPlist[*it];
-		double score = getScore(p);
+		double score = getScore(p);//随机获得分数
 		p->setScore(a, score);
 		mGroup.insert(std::make_pair(score, *it));
 		groupIndex++;
@@ -65,7 +66,7 @@ std::vector<int> Game(std::map<int, Player*>& mPlist, std::vector<int>& v, int a
 			int index = 0;
 			for (auto mit = mGroup.begin(); mit != mGroup.end(); mit++)
 			{
-				if (index < 3)//取前三名
+				if (index < 3)//取前三名编号插入Promotion
 				{
 					Promotion.push_back((*mit).second);
 				}

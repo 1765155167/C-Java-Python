@@ -67,7 +67,7 @@ int main()
 	list.push_pos((Node*)(&p3), 2);
 	list.push_pos((Node*)(&p4), 3);
 	list.push_pos((Node*)(&p5), 4);
-	list.traversal(PrintPerson);
+	list.traversal(PrintPerson);//遍历
 	std::cout << "--------------------->" << std::endl;
 	list.JosephProblem(3, Compare, PrintPerson);
 }

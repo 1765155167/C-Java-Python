@@ -7,7 +7,10 @@ AnimalInterFace::~AnimalInterFace()
 
 void Voice(AnimalInterFace* p)
 {
-	p->voice();
+	if (p != NULL)
+	{
+		p->voice();
+	}
 }
 
 void Voice(AnimalInterFace* p, bool d)
