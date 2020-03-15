@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--创建一个xml配置文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <!--将一个Bean交由Spring创建并管理-->
+    <bean class="com.hqf.class004.AnotherBean" id="anotherBean"
+    scope="prototype"
+    lazy-init="default"
+    init-method="print"/> <!--实例构造后调用print方法-->
+    <!--prototype 每次通过上下文请求一个bean时都会new一个-->
+    <!--singleton单例模式，同一个上下文通过bean id创建时只有一个，不同上下文创建的不同-->
+    <bean class="com.hqf.class004.Bean" id="bean">
+        <constructor-arg
+                index="0" name="anotherBean"
+                type="com.hqf.class004.AnotherBean"
+                ref="anotherBean"/>
+        <constructor-arg index="1" name="string"
+                         type="java.lang.String"
+                         value="Hello"/>
+        <property name="anotherBean1">
+            <!--注入bean 不通过id注入-->
+            <bean class="com.hqf.class004.AnotherBean" />
+        </property>
+        <property name="string1" value="World"/>
+        <property name="stringList">
+            <list>
+                <value>string</value>
+                <value>list</value>
+            </list>
+        </property>
+        <property name="anotherBeanList">
+            <list>
+                <ref bean="anotherBean"/>
+                <ref bean="anotherBean"/>
+            </list>
+        </property>
+        <property name="anotherBeanSet">
+            <set>
+                <ref bean="anotherBean"/>
+            </set>
+        </property>
+        <property name="stringSet">
+            <set>
+                <value>string</value>
+                <value>set</value>
+            </set>
+        </property>
+        <property name="anotherBeanStringMap">
+            <map>
+                <entry key-ref="anotherBean" value="AnotherBean"/>
+            </map>
+        </property>
+        <property name="stringAnotherBeanMap">
+            <map>
+                <entry key="string" value-ref="anotherBean"/>
+                <entry key="another" value-ref="anotherBean"/>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="properties">HelloProperties</prop>
+            </props>
+        </property>
+        <property name="anotherBean2">
+            <null></null><!--注入空值-->
+        </property>
+    </bean>
+    <!--<bean class="com.hqf.class004.Bean" id="bean"
+          c:anotherBean-ref="anotherBean" c:string="Hello"
+          p:anotherBean1-ref="anotherBean" p:string1="World" />-->
+</beans>

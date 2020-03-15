@@ -1,5 +1,6 @@
 package 测试;
 
+import JavaBase.测试.Factorial;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

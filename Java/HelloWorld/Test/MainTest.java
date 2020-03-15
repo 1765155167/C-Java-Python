@@ -1,3 +1,5 @@
+import JavaBase.String.Main;
+
 import static org.junit.Assert.*;
 
 public class MainTest {

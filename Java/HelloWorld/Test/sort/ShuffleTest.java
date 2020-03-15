@@ -1,13 +1,10 @@
 package sort;
 
+import JavaBase.sort.Shuffle;
 import org.junit.Test;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class ShuffleTest {
 

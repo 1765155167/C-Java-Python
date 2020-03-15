@@ -1,6 +1,6 @@
 package 测试;
 
-import jdk.jfr.Enabled;
+import JavaBase.测试.Config;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

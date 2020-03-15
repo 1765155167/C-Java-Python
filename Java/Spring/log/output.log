@@ -1,0 +1,7 @@
+18:28:16.918 [main] INFO  c.h.service.impl.AccountServiceImpl - accountDao = com.hqf.dao.impl.AccountDaoImpl@33c7e1bb
+18:31:46.352 [main] INFO  c.h.service.impl.AccountServiceImpl - accountDao = com.hqf.dao.impl.AccountDaoImpl@33c7e1bb
+18:31:46.357 [main] INFO  com.hqf.dao.impl.AccountDaoImpl - save Info com.hqf.dao.impl.AccountDaoImpl@33c7e1bb
+18:31:46.363 [main] INFO  com.hqf.dao.impl.AccountDaoImpl - save Info com.hqf.dao.impl.AccountDaoImpl@33c7e1bb
+18:31:46.363 [main] INFO  com.hqf.dao.impl.AccountDaoImpl - save Info com.hqf.dao.impl.AccountDaoImpl@33c7e1bb
+18:31:46.363 [main] INFO  com.hqf.dao.impl.AccountDaoImpl - save Info com.hqf.dao.impl.AccountDaoImpl@33c7e1bb
+18:31:46.363 [main] INFO  com.hqf.dao.impl.AccountDaoImpl - save Info com.hqf.dao.impl.AccountDaoImpl@33c7e1bb
