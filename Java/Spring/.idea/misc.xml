@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/Web" />
+    <file type="web" url="file://$PROJECT_DIR$/web-servlet-embedded" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

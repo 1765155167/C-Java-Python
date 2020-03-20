@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/BeanDemo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/BeanDemo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Bean属性继承/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Bean属性继承/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Factory/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Factory/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Factory_Spring/src/main/java" charset="UTF-8" />
@@ -11,9 +13,18 @@
     <file url="file://$PROJECT_DIR$/IOCControl/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SpringDemo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SpringDemo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringNote/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringNote/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/injectBean/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/injectBean/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web-servlet-embedded/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web-servlet-embedded/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/自定义作用域/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/自定义作用域/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/通过注解注入Bean/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/通过注解注入Bean/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

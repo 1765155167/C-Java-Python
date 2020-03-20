@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--创建一个xml配置文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <!--将一个Bean交由Spring创建并管理-->
+    <!--Class1和Class2继承于ParentClass时-->
+<!--    <bean class="com.hqf.ParentClass" abstract="true" id="parentClass">-->
+<!--        <property name="attribute1" value="attribute1"/>-->
+<!--        <property name="attribute2" value="attribute2"/>-->
+<!--        <property name="attribute3" value="attribute3"/>-->
+<!--    </bean>-->
+    <!--Class1和Class2只是含有相同的属性部分-->
+    <bean abstract="true" id="parentClass">
+        <property name="attribute1" value="attribute1"/>
+        <property name="attribute2" value="attribute2"/>
+        <property name="attribute3" value="attribute3"/>
+    </bean>
+    <bean class="com.hqf.Class1" id="class1" parent="parentClass">
+        <property name="attribute4" value="attribute4"/>
+        <property name="attribute5" value="attribute5"/>
+    </bean>
+    <bean class="com.hqf.Class2" id="class2" parent="parentClass">
+        <property name="attribute7" value="attribute7"/>
+        <property name="attribute8" value="attribute8"/>
+    </bean>
+</beans>

@@ -16,6 +16,11 @@
         <module>Web</module>
         <module>Factory</module>
         <module>Factory_Spring</module>
+        <module>web-servlet-embedded</module>
+        <module>自定义作用域</module>
+        <module>Bean属性继承</module>
+        <module>SpringNote</module>
+        <module>通过注解注入Bean</module>
     </modules>
 
     <properties>

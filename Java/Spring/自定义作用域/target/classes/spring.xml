@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--创建一个xml配置文件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-lazy-init="false"
+       default-init-method="onInit"
+       default-destroy-method="onDestroy">
+    <!-- beans 设置全局的
+        default-lazy-init="false"
+        default-init-method="onInit"
+        default-destroy-method="onDestroy"
+    -->
+    <!--将一个Bean交由Spring创建并管理-->
+    <bean class="com.hqf.MyScope" id="myScope"/>
+    <bean class="org.springframework.context.support.SimpleThreadScope" id="simpleThreadScope"/>
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="myScope" value-ref="myScope"/>
+                <entry key="simpleThreadScope" value-ref="simpleThreadScope"/>
+            </map>
+        </property>
+    </bean>
+    <!--选用自定义的scope-->
+    <bean class="com.hqf.Bean" id="bean" scope="singleton"
+          init-method="onInit" destroy-method="onDestroy"/>
+</beans>

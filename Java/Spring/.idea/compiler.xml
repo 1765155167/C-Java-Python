@@ -7,12 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Web" />
+        <module name="IOCControl" />
         <module name="BeanDemo" />
         <module name="Factory" />
-        <module name="SpringDemo" />
+        <module name="通过注解注入Bean" />
         <module name="Factory_Spring" />
-        <module name="IOCControl" />
+        <module name="web-servlet-embedded" />
         <module name="injectBean" />
+        <module name="Bean属性继承" />
+        <module name="SpringDemo" />
+        <module name="SpringNote" />
+        <module name="自定义作用域" />
       </profile>
     </annotationProcessing>
   </component>

@@ -2,7 +2,7 @@ package com.hqf.iot.debug;
 
 import android.widget.Toast;
 
-import com.hqf.iot.MyApplication;
+import com.hqf.iot.base.MyApplication;
 
 public class ToastNew {
 

@@ -1,8 +1,6 @@
 package com.hqf.iot.infoManager;
 
-import android.util.Log;
-
-import com.hqf.iot.MyMQTTService;
+import com.hqf.iot.service.MyMQTTService;
 import com.hqf.iot.debug.LogUntil;
 
 public class InfoCheck {

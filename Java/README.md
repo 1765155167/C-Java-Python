@@ -1057,3 +1057,40 @@ Maven并不会每次都从中央仓库下载jar包。一个jar包一旦被下载
 </properties>
 ```
 
+# IDEA
+## 配置
+setting 搜索 
+1. font字体
+2. encoding编码
+3. auto import 自动导入包
+4. tabs 设置tabs位置和排序
+## 快捷键
+ctrl + c 复制选择区域或者复制光标所在行
+ctrl + c 剪切选择区域或者复制光标所在行
+ctrl + d复制光标所在行并粘贴到下一行（复制选择区域并粘贴）
+ctrl + v格式化粘贴
+ctrl + shift + v 粘贴历史
+ctrl + alt + shift + v文本粘贴
+alt + shift + ↓ 将光标所在行代码下移动 
+alt + 鼠标 纵向选择
+shift + 箭头 选择
+ctrl + shift + 箭头 一次多选整个单词
+ctrl + G 跳转到某行 
+alt + 左右 切换tabs
+alt + 上下 移动光标到下一个函数
+ctrl + e 查看浏览过的文件
+Home 光标跳转到行首
+End 光标跳转到行尾
+ctrl + 左右 光标向调转到下一个词
+
+### 查找与替换
+ctrl + f 文件查找
+ctrl + shift + f 项目全局查找
+ctrl + r 替换
+ctrl + shift + r 项目全局替换
+ctrl + shift + n 按照文件名查找文件 选中include则查找全部的包括库文件
+help菜单下选择 Find Action查找菜单 快捷键 ctrl + shift + a
+shift + shift 万能查找
+项目文件或者文件夹鼠标右键选择show in Explorer 打开文件所在路径
+双击tabs 最大化显示当前文件
+导航栏可以选择

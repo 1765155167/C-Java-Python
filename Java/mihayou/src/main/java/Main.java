@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int A[] = {1,2,4};
-        int B[] = {1,4,2};
+        int A[] = {1,2,4,5,4};
+        int B[] = {1,4,4,5};
         System.out.println(maxUncrossedLines(A, B));
     }
     /**
@@ -30,6 +30,7 @@ public class Main {
                         if (flag == false) {
                             num++;
                             map.put(i, i+j);
+                            throw new NullPointerException();
                         }
                     }
                 }
