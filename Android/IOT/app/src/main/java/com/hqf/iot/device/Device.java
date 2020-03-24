@@ -2,9 +2,6 @@ package com.hqf.iot.device;
 
 import com.google.gson.Gson;
 import com.hqf.iot.service.MyMQTTService;
-import com.hqf.iot.infoManager.InfoCheck;
-
-import java.nio.charset.StandardCharsets;
 
 public class Device {
     private String devType;

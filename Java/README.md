@@ -1066,7 +1066,7 @@ setting 搜索
 4. tabs 设置tabs位置和排序
 ## 快捷键
 ctrl + c 复制选择区域或者复制光标所在行
-ctrl + c 剪切选择区域或者复制光标所在行
+ctrl + x 剪切选择区域或者复制光标所在行
 ctrl + d复制光标所在行并粘贴到下一行（复制选择区域并粘贴）
 ctrl + v格式化粘贴
 ctrl + shift + v 粘贴历史
@@ -1094,3 +1094,17 @@ shift + shift 万能查找
 项目文件或者文件夹鼠标右键选择show in Explorer 打开文件所在路径
 双击tabs 最大化显示当前文件
 导航栏可以选择
+
+##代码插入
+alt + ins 可以插入构造函数（constructor）、get方法set方法、生成toString(可以选择生成方式 + 或者StringBuffer等)、 生成hashCode和eqals
+
+## 代码重构
+### 重命名
+代码中变量 方法 类名 等重命名：shift + f6
+右键exclude 排除某项更改
+### 抽取方法（ctrl + alt + m）
+选择一段代码右键Refactor（重构）选择 Extract（提取） Method（方法）
+###抽取变量（ctrl + alt + v ）
+new Main()按下ctrl + alt + v 自动变成Main main = new Main();
+### 文件
+移动 F6 复制 F5

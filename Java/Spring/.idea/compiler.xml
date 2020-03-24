@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Web" />
+        <module name="自定义作用域" />
         <module name="IOCControl" />
         <module name="BeanDemo" />
         <module name="Factory" />
@@ -17,7 +17,7 @@
         <module name="Bean属性继承" />
         <module name="SpringDemo" />
         <module name="SpringNote" />
-        <module name="自定义作用域" />
+        <module name="Web" />
       </profile>
     </annotationProcessing>
   </component>
