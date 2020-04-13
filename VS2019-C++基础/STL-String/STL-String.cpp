@@ -76,7 +76,7 @@ void test04()
 
 int main()
 {
-	test03();
+	test04();
 	return 0;
 }
 

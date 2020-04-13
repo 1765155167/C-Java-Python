@@ -1083,6 +1083,8 @@ Home 光标跳转到行首
 End 光标跳转到行尾
 ctrl + 左右 光标向调转到下一个词
 
+ctrl + shift + f 将局部变量变成全局变量
+
 ### 查找与替换
 ctrl + f 文件查找
 ctrl + shift + f 项目全局查找
@@ -1102,6 +1104,7 @@ alt + ins 可以插入构造函数（constructor）、get方法set方法、生�
 ### 重命名
 代码中变量 方法 类名 等重命名：shift + f6
 右键exclude 排除某项更改
+
 ### 抽取方法（ctrl + alt + m）
 选择一段代码右键Refactor（重构）选择 Extract（提取） Method（方法）
 ###抽取变量（ctrl + alt + v ）

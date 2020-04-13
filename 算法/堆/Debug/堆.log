@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\17651\source\repos\数码\堆\main.cpp(9,35): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\堆\main.cpp(12,13): warning C4018: “<”: 有符号/无符号不匹配
+  堆.vcxproj -> C:\Users\17651\source\repos\数码\Debug\堆.exe

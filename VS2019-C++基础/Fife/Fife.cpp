@@ -94,7 +94,7 @@ void  fileOpertion()
 	file.seekp(0, ios::end);//写位置
 	file << "I'am Mr.Hu." << endl;
 	file.seekp(0);//读位置
-	while (file.good())
+	while (file.good())//判断流是否是好的
 	{
 		file.getline(data, 100);
 		cout << data << endl;

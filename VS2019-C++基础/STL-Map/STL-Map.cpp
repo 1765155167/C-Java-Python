@@ -93,9 +93,9 @@ void test03()
 	m.insert(std::make_pair(3, 22));
 	m.insert(std::make_pair(4, 23));
 	m.insert(std::make_pair(5, 24));
-	auto b = m.lower_bound(5);
+	auto b = m.lower_bound(5);//查找第一个大于等于5的数字
 	
-	auto a = m.equal_range(5);
+	auto a = m.equal_range(5);//
 	if (a.first != m.end())//>=
 	{
 		std::cout << (*(a.first)).first << std::endl;

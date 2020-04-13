@@ -11,7 +11,7 @@ public:
 	~MyClass();
 	void show()
 	{
-		std::cout << "a:" << a << std::endl;
+		std::cout << "a:" << a++ << std::endl;
 	}
 private:
 	int a;
@@ -52,12 +52,20 @@ public:
 private:
 	T* ptr;
 };
-
+/**/
 int main()
 {
 	/*只能指针不需要手动释放内存*/
-	std::auto_ptr<MyClass> ptr(new MyClass);
+	std::shared_ptr<MyClass> ptr(new MyClass);
+	auto share = ptr;
+	std::weak_ptr<MyClass> weak(share);//配合share_ptr使用
 	ptr->show();
+	share->show();
+	if (!weak.expired())
+	{
+		auto ptr2 = weak.lock();
+		ptr2->show();
+	}
 	/*MyAutoPtr<MyClass> ptr(new MyClass);
 	ptr->show();
 	(*ptr).show();*/

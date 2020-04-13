@@ -64,7 +64,7 @@ void setScore(std::vector<Player>& v)
 
 
 //ÅÅÃû´òÓ¡
-class Comrelue {
+class Comrelue{
 public:
 	bool operator()(Player& a, Player& b) const {
 		return a.getScore() > b.getScore();

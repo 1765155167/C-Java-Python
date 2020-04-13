@@ -1,0 +1,12 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (最大公共子序列.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(26,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(31,22): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(38,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(43,22): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(51,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(53,21): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(67,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(72,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\17651\source\repos\数码\最大公共子序列\main.cpp(74,21): warning C4018: “<”: 有符号/无符号不匹配
+  最大公共子序列.vcxproj -> C:\Users\17651\source\repos\数码\Debug\最大公共子序列长度.exe

@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\17651\source\repos\数码\数码2\main.cpp(10,17): warning C4244: “初始化”: 从“ll”转换到“int”，可能丢失数据
+C:\Users\17651\source\repos\数码\数码2\main.cpp(10,33): warning C4244: “初始化”: 从“const _Ty”转换到“int”，可能丢失数据
+          with
+          [
+              _Ty=ll
+          ]
+  数码2.vcxproj -> C:\Users\17651\source\repos\数码\Debug\数码2.exe

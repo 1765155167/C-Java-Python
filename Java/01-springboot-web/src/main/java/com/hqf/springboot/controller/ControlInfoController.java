@@ -12,7 +12,8 @@ public class ControlInfoController {
     private ConfigInfo configInfo;
 
     @RequestMapping("/boot/config")
-    public @ResponseBody String config() {
+    @ResponseBody
+    public String config() {
         //TODO 待办事项
         return "name:" + configInfo.getName() + "; location:" + configInfo.getLocation();
     }

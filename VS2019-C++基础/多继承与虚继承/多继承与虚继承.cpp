@@ -13,15 +13,25 @@ enum Texture
 class Furniture {
 public:
 	Furniture() {}
-	//Furniture(int t) {}
+	Furniture(int t) {}
+	virtual void fun() = 0;
 private:
-	//int m;
+	Texture m;
 };
 
 class Bad :virtual public Furniture{
 public:
 	void sleep() {
 		std::cout << "在床上睡觉" << std::endl;
+	}
+private:
+};
+
+class Sofa1 :virtual public Furniture {
+public:
+	void sleep()
+	{
+		std::cout << "在沙发休息" << std::endl;
 	}
 private:
 };
@@ -35,25 +45,26 @@ public:
 private:
 };
 
-class SofaBad: public Sofa, public Bad {
+class SofaBad1: public Sofa, public Bad, public Sofa1 {
 public:
 	void SofaBad_sleep()
 	{
 		Sofa::sleep();
 		Bad::sleep();
 	}
+
 private:
 };
 
 int main()
 {
-	SofaBad sb;
+	/*SofaBad sb;
 	sb.SofaBad_sleep();
-	sb.Sofa::sleep();
+	sb.Sofa::sleep();*/
 	std::cout << "Furniture大小：" << sizeof(Furniture) << std::endl;
 	std::cout << "Sofa大小：" << sizeof(Sofa) << std::endl;
 	std::cout << "Bad大小：" << sizeof(Bad) << std::endl;
-	std::cout << "SofaBad大小：" << sizeof(SofaBad) << std::endl;
+	std::cout << "SofaBad大小：" << sizeof(SofaBad1) << std::endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

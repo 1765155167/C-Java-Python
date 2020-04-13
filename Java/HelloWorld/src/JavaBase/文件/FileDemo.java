@@ -45,9 +45,9 @@ public class FileDemo {
         File file1 = new File(".");
         File[] files = file1.listFiles();
         for (var f:
-             files) {
+                files) {
             System.out.println(f);
-        }
+            }
         Properties props = new Properties();
         try {
             props.setProperty("key1","!!!");

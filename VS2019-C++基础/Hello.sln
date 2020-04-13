@@ -117,6 +117,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "字符串最后一个单词
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "万万没想到之聪明的编辑", "万万没想到之聪明的编辑\万万没想到之聪明的编辑.vcxproj", "{84E0C3A9-051A-4B3C-A2BD-F6455290DFE7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "算法", "算法", "{9023AA11-C796-4D58-9EDE-A8C1292B2180}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "运动会", "运动会\运动会.vcxproj", "{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "运动会二", "运动会二\运动会二.vcxproj", "{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -581,9 +587,29 @@ Global
 		{84E0C3A9-051A-4B3C-A2BD-F6455290DFE7}.Release|x64.Build.0 = Release|x64
 		{84E0C3A9-051A-4B3C-A2BD-F6455290DFE7}.Release|x86.ActiveCfg = Release|Win32
 		{84E0C3A9-051A-4B3C-A2BD-F6455290DFE7}.Release|x86.Build.0 = Release|Win32
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Debug|x64.ActiveCfg = Debug|x64
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Debug|x64.Build.0 = Debug|x64
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Debug|x86.ActiveCfg = Debug|Win32
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Debug|x86.Build.0 = Debug|Win32
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Release|x64.ActiveCfg = Release|x64
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Release|x64.Build.0 = Release|x64
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Release|x86.ActiveCfg = Release|Win32
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4}.Release|x86.Build.0 = Release|Win32
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Debug|x64.ActiveCfg = Debug|x64
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Debug|x64.Build.0 = Debug|x64
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Debug|x86.ActiveCfg = Debug|Win32
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Debug|x86.Build.0 = Debug|Win32
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Release|x64.ActiveCfg = Release|x64
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Release|x64.Build.0 = Release|x64
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Release|x86.ActiveCfg = Release|Win32
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2958966-8B5E-43D4-AE86-1CB924AFFFB4} = {9023AA11-C796-4D58-9EDE-A8C1292B2180}
+		{29CFD247-DC04-4ADD-9919-F6C63D8B4EA5} = {9023AA11-C796-4D58-9EDE-A8C1292B2180}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {497BF047-DB4C-47B7-926A-CDB37E3541B5}
